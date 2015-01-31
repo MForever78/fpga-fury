@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "Z:/share/ISE/fury/VGA_test_isim_beh.exe" -prj "Z:/share/ISE/fury/VGA_test_beh.prj" "work.VGA_test" "work.glbl" 

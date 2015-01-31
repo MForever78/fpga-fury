@@ -1,0 +1,5 @@
+verilog work "VGA_render.v"
+verilog work "VGA_generator.v"
+verilog work "ipcore_dir/BG.v"
+verilog work "Counter_vga.v"
+verilog work "top.v"

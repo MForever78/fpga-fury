@@ -1,0 +1,18 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Sat Jan 31 18:23:37 2015
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk_100MHz" LOCATE = SITE "V10" LEVEL 1;
+COMP "vga_R<0>" LOCATE = SITE "U7" LEVEL 1;
+COMP "vga_R<1>" LOCATE = SITE "V7" LEVEL 1;
+COMP "vga_R<2>" LOCATE = SITE "N7" LEVEL 1;
+COMP "vga_G<0>" LOCATE = SITE "P8" LEVEL 1;
+COMP "vga_G<1>" LOCATE = SITE "T6" LEVEL 1;
+COMP "vga_G<2>" LOCATE = SITE "V6" LEVEL 1;
+COMP "hsync" LOCATE = SITE "N6" LEVEL 1;
+COMP "vsync" LOCATE = SITE "P7" LEVEL 1;
+COMP "vga_B<0>" LOCATE = SITE "R7" LEVEL 1;
+COMP "vga_B<1>" LOCATE = SITE "T7" LEVEL 1;
+SCHEMATIC END;
+
