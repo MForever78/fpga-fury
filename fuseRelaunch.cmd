@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "Z:/share/ISE/fury/VGA_test_isim_beh.exe" -prj "Z:/share/ISE/fury/VGA_test_beh.prj" "work.VGA_test" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "Z:/share/ISE/fury/Clock_div_test_isim_beh.exe" -prj "Z:/share/ISE/fury/Clock_div_test_beh.prj" "work.Clock_div_test" "work.glbl" 

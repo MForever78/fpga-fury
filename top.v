@@ -9,15 +9,31 @@ module top(clk_100MHz, btn, sw, segment, vsync, hsync, vga_R, vga_B, vga_G);
     output wire [2: 0] vga_R, vga_G;
     output wire [1: 0] vga_B;
 
-    wire clk_vga, valid;
+    wire clk_vga, valid, pressed;
     wire [9: 0] x_ptr, y_ptr;
     wire [7: 0] RGB, data_bg, data_hero_main_0, data_hero_main_1, data_hero_up, data_hero_down, data_hero_left, data_hero_right, data_monster_up_0, data_monster_up_1, data_monster_down_0, data_monster_down_1, data_monster_left_0, data_monster_left_1, data_monster_right_0, data_monster_right_1;
     wire [15: 0] addr_bg;
     wire [8: 0] addr_hero_main_0, addr_hero_main_1, addr_hero_up, addr_hero_down, addr_hero_left, addr_hero_right, addr_monster_up_0, addr_monster_up_1, addr_monster_down_0, addr_monster_down_1, addr_monster_left_0, addr_monster_left_1, addr_monster_right_0, addr_monster_right_1;
+    wire [1: 0] state_hero, state_hero_old;
+
+    assign pressed = ^btn;
 
     Counter_vga c1(
         .clk(clk_100MHz),
         .clk_vga(clk_vga)
+    );
+
+    Clock_div c2(
+        .clk(clk_100MHz),
+        .clk_hero(clk_hero),
+        .clk_game(clk_game)
+    );
+
+    Hero_state hero_state(
+        .clk(clk_game),
+        .btn(btn),
+        .old_state(state_hero_old),
+        .state(state_hero)
     );
 
     VGA_generator generator(
@@ -31,6 +47,8 @@ module top(clk_100MHz, btn, sw, segment, vsync, hsync, vga_R, vga_B, vga_G);
 
     VGA_selector selector(
         .clk(clk_vga),
+        .clk0(clk_hero),
+        .clk1(clk_game),
         .data0(data_bg),
         .data1(data_hero_main_0),
         .data2(data_hero_main_1),
@@ -65,12 +83,19 @@ module top(clk_100MHz, btn, sw, segment, vsync, hsync, vga_R, vga_B, vga_G);
         .state1(state_hero),
         .x_ptr(x_ptr),
         .y_ptr(y_ptr),
+        .pressed(pressed),
         .RGB(RGB)
     );
 
     VGA_render render(valid, RGB, vga_R, vga_G, vga_B);
 
     BG bg(.clka(clk_vga), .addra(addr_bg), .douta(data_bg));
+
     Hero_main_0 hero_main_0(.clka(clk_vga), .addra(addr_hero_main_0), .douta(data_hero_main_0));
+    Hero_main_1 hero_main_1(.clka(clk_vga), .addra(addr_hero_main_1), .douta(data_hero_main_1));
+    Hero_up hero_up(.clka(clk_vga), .addra(addr_hero_up), .douta(data_hero_up));
+    Hero_down hero_down(.clka(clk_vga), .addra(addr_hero_down), .douta(data_hero_down));
+    Hero_left hero_left(.clka(clk_vga), .addra(addr_hero_left), .douta(data_hero_left));
+    Hero_right hero_right(.clka(clk_vga), .addra(addr_hero_right), .douta(data_hero_right));
 
 endmodule

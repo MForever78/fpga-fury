@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Reading design: top.prj
 
@@ -114,12 +114,26 @@ Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\VGA_render.v
 Parsing module <VGA_render>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\VGA_generator.v" into library work
 Parsing module <VGA_generator>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_up.v" into library work
+Parsing module <Hero_up>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_right.v" into library work
+Parsing module <Hero_right>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_main_1.v" into library work
+Parsing module <Hero_main_1>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_main_0.v" into library work
 Parsing module <Hero_main_0>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_left.v" into library work
+Parsing module <Hero_left>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_down.v" into library work
+Parsing module <Hero_down>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\BG.v" into library work
 Parsing module <BG>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Hero_state.v" into library work
+Parsing module <Hero_state>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Counter_vga.v" into library work
 Parsing module <Counter_vga>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Clock_div.v" into library work
+Parsing module <Clock_div>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\top.v" into library work
 Parsing module <top>.
 
@@ -132,30 +146,29 @@ Elaborating module <top>.
 Elaborating module <Counter_vga>.
 WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\Counter_vga.v" Line 14: Result of 3-bit expression is truncated to fit in 2-bit target.
 
+Elaborating module <Clock_div>.
+
+Elaborating module <Hero_state>.
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 35: Assignment to state_hero_old ignored, since the identifier is never used
+
 Elaborating module <VGA_generator>.
 WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_generator.v" Line 23: Result of 11-bit expression is truncated to fit in 10-bit target.
 WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_generator.v" Line 30: Result of 11-bit expression is truncated to fit in 10-bit target.
 
 Elaborating module <VGA_selector>.
-WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 26: Result of 31-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 27: Result of 9-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 29: Result of 32-bit expression is truncated to fit in 5-bit target.
-WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 30: Result of 32-bit expression is truncated to fit in 5-bit target.
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 51: Assignment to addr_hero_main_1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 52: Assignment to addr_hero_up ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 53: Assignment to addr_hero_down ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 54: Assignment to addr_hero_left ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 55: Assignment to addr_hero_right ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 56: Assignment to addr_monster_up_0 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 57: Assignment to addr_monster_up_1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 58: Assignment to addr_monster_down_0 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 59: Assignment to addr_monster_down_1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 60: Assignment to addr_monster_left_0 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 61: Assignment to addr_monster_left_1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 62: Assignment to addr_monster_right_0 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 63: Assignment to addr_monster_right_1 ignored, since the identifier is never used
-WARNING:HDLCompiler:189 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 64: Size mismatch in connection of port <state0>. Formal port size is 228-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 65: Size mismatch in connection of port <state1>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 31: Result of 31-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 32: Result of 9-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 34: Result of 32-bit expression is truncated to fit in 5-bit target.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v" Line 35: Result of 32-bit expression is truncated to fit in 5-bit target.
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 74: Assignment to addr_monster_up_0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 75: Assignment to addr_monster_up_1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 76: Assignment to addr_monster_down_0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 77: Assignment to addr_monster_down_1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 78: Assignment to addr_monster_left_0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 79: Assignment to addr_monster_left_1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 80: Assignment to addr_monster_right_0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 81: Assignment to addr_monster_right_1 ignored, since the identifier is never used
+WARNING:HDLCompiler:189 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 82: Size mismatch in connection of port <state0>. Formal port size is 228-bit while actual signal size is 1-bit.
 
 Elaborating module <VGA_render>.
 
@@ -164,9 +177,23 @@ WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_d
 
 Elaborating module <Hero_main_0>.
 WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_main_0.v" Line 39: Empty module <Hero_main_0> remains a black box.
-WARNING:HDLCompiler:634 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 14: Net <data_hero_main_1[7]> does not have a driver.
-WARNING:HDLCompiler:634 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 64: Net <state_monsters> does not have a driver.
-WARNING:HDLCompiler:634 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 65: Net <state_hero> does not have a driver.
+
+Elaborating module <Hero_main_1>.
+WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_main_1.v" Line 39: Empty module <Hero_main_1> remains a black box.
+
+Elaborating module <Hero_up>.
+WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_up.v" Line 39: Empty module <Hero_up> remains a black box.
+
+Elaborating module <Hero_down>.
+WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_down.v" Line 39: Empty module <Hero_down> remains a black box.
+
+Elaborating module <Hero_left>.
+WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_left.v" Line 39: Empty module <Hero_left> remains a black box.
+
+Elaborating module <Hero_right>.
+WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Hero_right.v" Line 39: Empty module <Hero_right> remains a black box.
+WARNING:HDLCompiler:634 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 14: Net <data_monster_up_0[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 82: Net <state_monsters> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -174,26 +201,16 @@ WARNING:HDLCompiler:634 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Li
 
 Synthesizing Unit <top>.
     Related source file is "\\vmware-host\shared folders\share\ISE\fury\top.v".
-WARNING:Xst:647 - Input <btn> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <sw> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr2> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr3> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr4> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr5> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr6> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr7> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr8> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr9> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr10> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr11> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr12> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr13> of the instance <selector> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <addr14> of the instance <selector> is unconnected or connected to loadless signal.
-WARNING:Xst:653 - Signal <data_hero_main_1> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <data_hero_up> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <data_hero_down> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <data_hero_left> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <data_hero_right> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 32: Output port <old_state> of the instance <hero_state> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr7> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr8> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr9> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr10> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr11> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr12> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr13> of the instance <selector> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 48: Output port <addr14> of the instance <selector> is unconnected or connected to loadless signal.
 WARNING:Xst:653 - Signal <data_monster_up_0> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <data_monster_up_1> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <data_monster_down_0> is used but never assigned. This sourceless signal will be automatically connected to value GND.
@@ -203,9 +220,7 @@ WARNING:Xst:653 - Signal <data_monster_left_1> is used but never assigned. This 
 WARNING:Xst:653 - Signal <data_monster_right_0> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <data_monster_right_1> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <state_monsters> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <state_hero> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Summary:
-	no macro.
 Unit <top> synthesized.
 
 Synthesizing Unit <Counter_vga>.
@@ -217,6 +232,23 @@ Synthesizing Unit <Counter_vga>.
 	inferred   1 Adder/Subtractor(s).
 	inferred   3 D-type flip-flop(s).
 Unit <Counter_vga> synthesized.
+
+Synthesizing Unit <Clock_div>.
+    Related source file is "\\vmware-host\shared folders\share\ISE\fury\Clock_div.v".
+    Found 32-bit register for signal <cnt>.
+    Found 32-bit adder for signal <cnt[31]_GND_3_o_add_1_OUT> created at line 9.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  32 D-type flip-flop(s).
+Unit <Clock_div> synthesized.
+
+Synthesizing Unit <Hero_state>.
+    Related source file is "\\vmware-host\shared folders\share\ISE\fury\Hero_state.v".
+    Found 2-bit register for signal <state>.
+    Found 2-bit register for signal <old_state>.
+    Summary:
+	inferred   4 D-type flip-flop(s).
+Unit <Hero_state> synthesized.
 
 Synthesizing Unit <VGA_generator>.
     Related source file is "\\vmware-host\shared folders\share\ISE\fury\VGA_generator.v".
@@ -230,12 +262,12 @@ Synthesizing Unit <VGA_generator>.
     Found 10-bit register for signal <x_cnt>.
     Found 10-bit subtractor for signal <x_ptr> created at line 38.
     Found 10-bit subtractor for signal <y_ptr> created at line 39.
-    Found 10-bit adder for signal <x_cnt[9]_GND_3_o_add_2_OUT> created at line 23.
-    Found 10-bit adder for signal <y_cnt[9]_GND_3_o_add_8_OUT> created at line 30.
-    Found 10-bit comparator greater for signal <GND_3_o_x_cnt[9]_LessThan_13_o> created at line 33
-    Found 10-bit comparator greater for signal <x_cnt[9]_PWR_3_o_LessThan_14_o> created at line 33
-    Found 10-bit comparator greater for signal <GND_3_o_y_cnt[9]_LessThan_15_o> created at line 33
-    Found 10-bit comparator greater for signal <y_cnt[9]_GND_3_o_LessThan_16_o> created at line 33
+    Found 10-bit adder for signal <x_cnt[9]_GND_5_o_add_2_OUT> created at line 23.
+    Found 10-bit adder for signal <y_cnt[9]_GND_5_o_add_8_OUT> created at line 30.
+    Found 10-bit comparator greater for signal <GND_5_o_x_cnt[9]_LessThan_13_o> created at line 33
+    Found 10-bit comparator greater for signal <x_cnt[9]_PWR_5_o_LessThan_14_o> created at line 33
+    Found 10-bit comparator greater for signal <GND_5_o_y_cnt[9]_LessThan_15_o> created at line 33
+    Found 10-bit comparator greater for signal <y_cnt[9]_GND_5_o_LessThan_16_o> created at line 33
     Found 10-bit comparator lessequal for signal <n0015> created at line 35
     Found 10-bit comparator lessequal for signal <n0017> created at line 36
     Summary:
@@ -246,20 +278,18 @@ Unit <VGA_generator> synthesized.
 
 Synthesizing Unit <VGA_selector>.
     Related source file is "\\vmware-host\shared folders\share\ISE\fury\VGA_selector.v".
+        TRANSPARENT = 8'b11111100
         LEFT = 155
         BG_W = 330
         BG_H = 480
         HERO_LEFT = 72
         HERO_UP = 112
         HERO_W = 21
-        HERO_H = 15
+        HERO_MAIN_H = 15
+        HERO_HORI_H = 19
+        HERO_VERT_H = 16
         MONS_W = 20
         MONS_H = 15
-WARNING:Xst:647 - Input <data2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <data3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <data4> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <data5> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <data6> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data7> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data8> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data9> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -269,12 +299,7 @@ WARNING:Xst:647 - Input <data12> is never used. This port will be preserved and 
 WARNING:Xst:647 - Input <data13> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data14> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <state0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <state1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:653 - Signal <addr2> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <addr3> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <addr4> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <addr5> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <addr6> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:647 - Input <clk1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:653 - Signal <addr7> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <addr8> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <addr9> is used but never assigned. This sourceless signal will be automatically connected to value GND.
@@ -284,28 +309,31 @@ WARNING:Xst:653 - Signal <addr12> is used but never assigned. This sourceless si
 WARNING:Xst:653 - Signal <addr13> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <addr14> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Found 8-bit register for signal <RGB>.
-    Found 11-bit subtractor for signal <n0054> created at line 26.
-    Found 16-bit adder for signal <n0084> created at line 33.
-    Found 16-bit adder for signal <n0087> created at line 33.
-    Found 16-bit adder for signal <n0090> created at line 33.
-    Found 16-bit adder for signal <addr0> created at line 33.
-    Found 9-bit adder for signal <n0096> created at line 35.
-    Found 9-bit adder for signal <n0099> created at line 35.
-    Found 9-bit adder for signal <addr1> created at line 35.
-    Found 5-bit subtractor for signal <n0056[4:0]> created at line 35.
-    Found 5-bit subtractor for signal <y_hero> created at line 13.
-    Found 10-bit comparator lessequal for signal <n0011> created at line 37
-    Found 10-bit comparator greater for signal <x_ptr[9]_GND_4_o_LessThan_13_o> created at line 37
-    Found 10-bit comparator greater for signal <y_ptr[9]_GND_4_o_LessThan_14_o> created at line 37
-    Found 8-bit comparator lessequal for signal <n0017> created at line 38
-    Found 8-bit comparator greater for signal <x_bg[7]_GND_4_o_LessThan_16_o> created at line 38
-    Found 8-bit comparator lessequal for signal <n0021> created at line 38
-    Found 8-bit comparator greater for signal <y_bg[7]_GND_4_o_LessThan_18_o> created at line 38
+    Found 11-bit subtractor for signal <n0085> created at line 31.
+    Found 16-bit adder for signal <n0122> created at line 38.
+    Found 16-bit adder for signal <n0125> created at line 38.
+    Found 16-bit adder for signal <n0128> created at line 38.
+    Found 16-bit adder for signal <addr0> created at line 38.
+    Found 9-bit adder for signal <n0134> created at line 40.
+    Found 9-bit adder for signal <n0137> created at line 40.
+    Found 9-bit adder for signal <addr1> created at line 40.
+    Found 5-bit subtractor for signal <n0087[4:0]> created at line 40.
+    Found 5-bit subtractor for signal <y_hero> created at line 14.
+    Found 8-bit 4-to-1 multiplexer for signal <state1[1]_data0[7]_wide_mux_48_OUT> created at line 57.
+    Found 10-bit comparator lessequal for signal <n0012> created at line 47
+    Found 10-bit comparator greater for signal <x_ptr[9]_GND_6_o_LessThan_18_o> created at line 47
+    Found 10-bit comparator greater for signal <y_ptr[9]_GND_6_o_LessThan_19_o> created at line 47
+    Found 8-bit comparator lessequal for signal <n0018> created at line 48
+    Found 8-bit comparator greater for signal <x_bg[7]_GND_6_o_LessThan_21_o> created at line 48
+    Found 8-bit comparator lessequal for signal <n0022> created at line 48
+    Found 8-bit comparator greater for signal <y_bg[7]_GND_6_o_LessThan_23_o> created at line 48
+    Found 8-bit comparator greater for signal <y_bg[7]_PWR_7_o_LessThan_31_o> created at line 50
+    Found 8-bit comparator greater for signal <y_bg[7]_PWR_7_o_LessThan_39_o> created at line 52
     Summary:
 	inferred  10 Adder/Subtractor(s).
 	inferred   8 D-type flip-flop(s).
-	inferred   7 Comparator(s).
-	inferred   1 Multiplexer(s).
+	inferred   9 Comparator(s).
+	inferred   8 Multiplexer(s).
 Unit <VGA_selector> synthesized.
 
 Synthesizing Unit <VGA_render>.
@@ -318,28 +346,33 @@ Unit <VGA_render> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 15
+# Adders/Subtractors                                   : 16
  10-bit adder                                          : 2
  10-bit subtractor                                     : 2
  11-bit subtractor                                     : 1
  16-bit adder                                          : 4
  2-bit adder                                           : 1
+ 32-bit adder                                          : 1
  5-bit subtractor                                      : 2
  9-bit adder                                           : 3
-# Registers                                            : 5
+# Registers                                            : 8
  1-bit register                                        : 1
  10-bit register                                       : 2
- 2-bit register                                        : 1
+ 2-bit register                                        : 3
+ 32-bit register                                       : 1
  8-bit register                                        : 1
-# Comparators                                          : 13
+# Comparators                                          : 15
  10-bit comparator greater                             : 6
  10-bit comparator lessequal                           : 3
- 8-bit comparator greater                              : 2
+ 8-bit comparator greater                              : 4
  8-bit comparator lessequal                            : 2
-# Multiplexers                                         : 4
+# Multiplexers                                         : 11
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
- 8-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 7
+ 8-bit 4-to-1 multiplexer                              : 1
+# Xors                                                 : 1
+ 1-bit xor4                                            : 1
 
 =========================================================================
 
@@ -349,8 +382,22 @@ Macro Statistics
 
 Reading core <ipcore_dir/BG.ngc>.
 Reading core <ipcore_dir/Hero_main_0.ngc>.
+Reading core <ipcore_dir/Hero_main_1.ngc>.
+Reading core <ipcore_dir/Hero_up.ngc>.
+Reading core <ipcore_dir/Hero_down.ngc>.
+Reading core <ipcore_dir/Hero_left.ngc>.
+Reading core <ipcore_dir/Hero_right.ngc>.
 Loading core <BG> for timing and area information for instance <bg>.
 Loading core <Hero_main_0> for timing and area information for instance <hero_main_0>.
+Loading core <Hero_main_1> for timing and area information for instance <hero_main_1>.
+Loading core <Hero_up> for timing and area information for instance <hero_up>.
+Loading core <Hero_down> for timing and area information for instance <hero_down>.
+Loading core <Hero_left> for timing and area information for instance <hero_left>.
+Loading core <Hero_right> for timing and area information for instance <hero_right>.
+
+Synthesizing (advanced) Unit <Clock_div>.
+The following registers are absorbed into counter <cnt>: 1 register on signal <cnt>.
+Unit <Clock_div> synthesized (advanced).
 
 Synthesizing (advanced) Unit <Counter_vga>.
 The following registers are absorbed into counter <cnt>: 1 register on signal <cnt>.
@@ -371,33 +418,47 @@ Macro Statistics
  5-bit subtractor                                      : 2
  9-bit adder                                           : 3
  9-bit subtractor                                      : 1
-# Counters                                             : 3
+# Counters                                             : 4
  10-bit up counter                                     : 2
  2-bit up counter                                      : 1
-# Registers                                            : 9
- Flip-Flops                                            : 9
-# Comparators                                          : 13
+ 32-bit up counter                                     : 1
+# Registers                                            : 13
+ Flip-Flops                                            : 13
+# Comparators                                          : 15
  10-bit comparator greater                             : 6
  10-bit comparator lessequal                           : 3
- 8-bit comparator greater                              : 2
+ 8-bit comparator greater                              : 4
  8-bit comparator lessequal                            : 2
-# Multiplexers                                         : 4
+# Multiplexers                                         : 11
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
- 8-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 7
+ 8-bit 4-to-1 multiplexer                              : 1
+# Xors                                                 : 1
+ 1-bit xor4                                            : 1
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:2677 - Node <c2/cnt_26> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <c2/cnt_27> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <c2/cnt_28> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <c2/cnt_29> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <c2/cnt_30> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <c2/cnt_31> of sequential type is unconnected in block <top>.
 
 Optimizing unit <top> ...
 
+Optimizing unit <Hero_state> ...
+WARNING:Xst:2677 - Node <hero_state/old_state_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <hero_state/old_state_0> of sequential type is unconnected in block <top>.
+
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 1.
-FlipFlop generator/y_cnt_0 has been replicated 2 time(s)
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 2.
+FlipFlop generator/y_cnt_0 has been replicated 1 time(s)
 FlipFlop generator/y_cnt_1 has been replicated 1 time(s)
 FlipFlop generator/y_cnt_2 has been replicated 1 time(s)
 FlipFlop generator/y_cnt_3 has been replicated 1 time(s)
@@ -408,8 +469,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 36
- Flip-Flops                                            : 36
+# Registers                                            : 63
+ Flip-Flops                                            : 63
 
 =========================================================================
 
@@ -432,29 +493,31 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 260
-#      GND                         : 3
-#      INV                         : 4
-#      LUT1                        : 18
-#      LUT2                        : 14
-#      LUT3                        : 22
-#      LUT4                        : 25
-#      LUT5                        : 21
-#      LUT6                        : 64
-#      MUXCY                       : 41
-#      VCC                         : 3
-#      XORCY                       : 45
-# FlipFlops/Latches                : 42
+# BELS                             : 394
+#      GND                         : 8
+#      INV                         : 5
+#      LUT1                        : 43
+#      LUT2                        : 16
+#      LUT3                        : 19
+#      LUT4                        : 23
+#      LUT5                        : 43
+#      LUT6                        : 92
+#      MUXCY                       : 66
+#      VCC                         : 8
+#      XORCY                       : 71
+# FlipFlops/Latches                : 69
+#      FD                          : 28
 #      FDE                         : 6
 #      FDR                         : 21
-#      FDRE                        : 15
-# RAMS                             : 24
+#      FDRE                        : 14
+# RAMS                             : 29
 #      RAMB16BWER                  : 16
-#      RAMB8BWER                   : 8
+#      RAMB8BWER                   : 13
 # Clock Buffers                    : 2
 #      BUFG                        : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 10
+# IO Buffers                       : 14
+#      IBUF                        : 4
 #      OBUF                        : 10
 
 Device utilization summary:
@@ -464,24 +527,24 @@ Selected Device : 6slx16csg324-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              42  out of  18224     0%  
- Number of Slice LUTs:                  168  out of   9112     1%  
-    Number used as Logic:               168  out of   9112     1%  
+ Number of Slice Registers:              69  out of  18224     0%  
+ Number of Slice LUTs:                  241  out of   9112     2%  
+    Number used as Logic:               241  out of   9112     2%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    189
-   Number with an unused Flip Flop:     147  out of    189    77%  
-   Number with an unused LUT:            21  out of    189    11%  
-   Number of fully used LUT-FF pairs:    21  out of    189    11%  
-   Number of unique control sets:         6
+ Number of LUT Flip Flop pairs used:    260
+   Number with an unused Flip Flop:     191  out of    260    73%  
+   Number with an unused LUT:            19  out of    260     7%  
+   Number of fully used LUT-FF pairs:    50  out of    260    19%  
+   Number of unique control sets:         8
 
 IO Utilization: 
  Number of IOs:                          31
- Number of bonded IOBs:                  11  out of    232     4%  
+ Number of bonded IOBs:                  15  out of    232     6%  
 
 Specific Feature Utilization:
- Number of Block RAM/FIFO:               20  out of     32    62%  
-    Number using Block RAM only:         20
+ Number of Block RAM/FIFO:               23  out of     32    71%  
+    Number using Block RAM only:         23
  Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
 
 ---------------------------
@@ -505,10 +568,16 @@ Clock Information:
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                                               | Load  |
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+-------+
-c1/clk_vga                         | BUFG                                                                                                                                | 63    |
-clk_100MHz                         | BUFGP                                                                                                                               | 3     |
+c1/clk_vga                         | BUFG                                                                                                                                | 67    |
+clk_100MHz                         | BUFGP                                                                                                                               | 29    |
+c2/cnt_15                          | NONE(hero_state/state_1)                                                                                                            | 2     |
 bg/N1                              | NONE(bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[22].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)       | 23    |
 hero_main_0/N1                     | NONE(hero_main_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)| 1     |
+hero_main_1/N1                     | NONE(hero_main_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)| 1     |
+hero_up/N1                         | NONE(hero_up/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)    | 1     |
+hero_down/N1                       | NONE(hero_down/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)  | 1     |
+hero_left/N1                       | NONE(hero_left/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)  | 1     |
+hero_right/N1                      | NONE(hero_right/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -520,9 +589,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 10.312ns (Maximum Frequency: 96.974MHz)
-   Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: 10.061ns
+   Minimum period: 10.345ns (Maximum Frequency: 96.670MHz)
+   Minimum input arrival time before clock: 5.776ns
+   Maximum output required time after clock: 10.085ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -531,38 +600,40 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'c1/clk_vga'
-  Clock period: 10.312ns (frequency: 96.974MHz)
-  Total number of paths / destination ports: 226376 / 423
+  Clock period: 10.345ns (frequency: 96.670MHz)
+  Total number of paths / destination ports: 216557 / 465
 -------------------------------------------------------------------------
-Delay:               10.312ns (Levels of Logic = 9)
+Delay:               10.345ns (Levels of Logic = 11)
   Source:            generator/y_cnt_4 (FF)
-  Destination:       bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[20].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram (RAM)
+  Destination:       bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram (RAM)
   Source Clock:      c1/clk_vga rising
   Destination Clock: c1/clk_vga rising
 
-  Data Path: generator/y_cnt_4 to bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[20].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram
+  Data Path: generator/y_cnt_4 to bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            16   0.525   1.290  generator/y_cnt_4 (generator/y_cnt_4)
-     LUT6:I4->O           14   0.250   1.127  generator/Msub_y_ptr_cy<5>11 (generator/Msub_y_ptr_cy<5>)
-     LUT4:I3->O           10   0.254   1.116  generator/Msub_y_ptr_xor<8>11 (selector/Madd_n0087_lut<0>14)
-     LUT6:I4->O            1   0.250   0.910  selector/Madd_n0087_cy<0>101_SW0 (N15)
-     LUT6:I3->O            5   0.235   0.841  selector/Madd_n0087_cy<0>111 (selector/Madd_n0087_cy<0>10)
-     LUT6:I5->O            1   0.254   0.000  selector/Madd_n0087_xor<0>121 (selector/Madd_addr0_lut<0>11)
-     MUXCY:S->O            1   0.215   0.000  selector/Madd_addr0_cy<0>_10 (selector/Madd_addr0_cy<0>11)
-     XORCY:CI->O          20   0.206   1.562  selector/Madd_addr0_xor<0>_11 (addr_bg<12>)
-     begin scope: 'bg:addra<12>'
-     LUT4:I0->O            4   0.254   0.803  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/out21 (U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.ram_ena)
-     RAMB8BWER:ENAWREN         0.220          U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[20].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram
+     FDRE:C->Q            19   0.525   1.261  generator/y_cnt_4 (generator/y_cnt_4)
+     LUT6:I5->O           17   0.254   1.209  generator/Msub_y_ptr_cy<5>11 (generator/Msub_y_ptr_cy<5>)
+     LUT2:I1->O           10   0.254   1.008  generator/Msub_y_ptr_xor<6>11 (y_ptr<6>)
+     LUT6:I5->O            2   0.254   0.954  selector/Madd_n0125_xor<0>81 (selector/n0125<7>)
+     LUT3:I0->O            1   0.235   0.682  selector/Madd_addr07 (selector/Madd_addr07)
+     LUT6:I5->O            1   0.254   0.000  selector/Madd_addr0_lut<0>8 (selector/Madd_addr0_lut<0>8)
+     MUXCY:S->O            1   0.215   0.000  selector/Madd_addr0_cy<0>_7 (selector/Madd_addr0_cy<0>8)
+     MUXCY:CI->O           1   0.023   0.000  selector/Madd_addr0_cy<0>_8 (selector/Madd_addr0_cy<0>9)
+     MUXCY:CI->O           1   0.023   0.000  selector/Madd_addr0_cy<0>_9 (selector/Madd_addr0_cy<0>10)
+     XORCY:CI->O          23   0.206   1.788  selector/Madd_addr0_xor<0>_10 (addr_bg<11>)
+     begin scope: 'bg:addra<11>'
+     LUT5:I0->O            2   0.254   0.725  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/out31 (U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.ram_ena)
+     RAMB8BWER:ENAWREN         0.220          U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram
     ----------------------------------------
-    Total                     10.312ns (2.663ns logic, 7.649ns route)
-                                       (25.8% logic, 74.2% route)
+    Total                     10.345ns (2.718ns logic, 7.627ns route)
+                                       (26.3% logic, 73.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_100MHz'
   Clock period: 2.833ns (frequency: 352.983MHz)
-  Total number of paths / destination ports: 9 / 6
+  Total number of paths / destination ports: 360 / 32
 -------------------------------------------------------------------------
 Delay:               2.833ns (Levels of Logic = 1)
   Source:            c1/cnt_1 (FF)
@@ -582,10 +653,74 @@ Delay:               2.833ns (Levels of Logic = 1)
                                        (43.6% logic, 56.4% route)
 
 =========================================================================
+Timing constraint: Default period analysis for Clock 'c2/cnt_15'
+  Clock period: 2.160ns (frequency: 462.963MHz)
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               2.160ns (Levels of Logic = 1)
+  Source:            hero_state/state_1 (FF)
+  Destination:       hero_state/state_1 (FF)
+  Source Clock:      c2/cnt_15 rising
+  Destination Clock: c2/cnt_15 rising
+
+  Data Path: hero_state/state_1 to hero_state/state_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              13   0.525   1.326  hero_state/state_1 (hero_state/state_1)
+     LUT5:I2->O            1   0.235   0.000  hero_state/btn[3]_GND_4_o_select_6_OUT<1>1 (hero_state/btn[3]_GND_4_o_select_6_OUT<1>)
+     FD:D                      0.074          hero_state/state_1
+    ----------------------------------------
+    Total                      2.160ns (0.834ns logic, 1.326ns route)
+                                       (38.6% logic, 61.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'c1/clk_vga'
+  Total number of paths / destination ports: 64 / 8
+-------------------------------------------------------------------------
+Offset:              5.776ns (Levels of Logic = 4)
+  Source:            btn<0> (PAD)
+  Destination:       selector/RGB_0 (FF)
+  Destination Clock: c1/clk_vga rising
+
+  Data Path: btn<0> to selector/RGB_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   1.328   1.042  btn_0_IBUF (btn_0_IBUF)
+     LUT4:I0->O           16   0.254   1.612  btn[3]_reduce_xor_11_xo<0>1 (pressed)
+     LUT5:I0->O            1   0.254   0.958  selector/Mmux_data0[7]_state1[1]_mux_53_OUT101 (selector/Mmux_data0[7]_state1[1]_mux_53_OUT10)
+     LUT6:I2->O            1   0.254   0.000  selector/Mmux_data0[7]_state1[1]_mux_53_OUT105 (selector/data0[7]_state1[1]_mux_53_OUT<4>)
+     FDR:D                     0.074          selector/RGB_4
+    ----------------------------------------
+    Total                      5.776ns (2.164ns logic, 3.612ns route)
+                                       (37.5% logic, 62.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'c2/cnt_15'
+  Total number of paths / destination ports: 8 / 2
+-------------------------------------------------------------------------
+Offset:              2.852ns (Levels of Logic = 2)
+  Source:            btn<0> (PAD)
+  Destination:       hero_state/state_1 (FF)
+  Destination Clock: c2/cnt_15 rising
+
+  Data Path: btn<0> to hero_state/state_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   1.328   1.196  btn_0_IBUF (btn_0_IBUF)
+     LUT5:I0->O            1   0.254   0.000  hero_state/btn[3]_GND_4_o_select_6_OUT<1>1 (hero_state/btn[3]_GND_4_o_select_6_OUT<1>)
+     FD:D                      0.074          hero_state/state_1
+    ----------------------------------------
+    Total                      2.852ns (1.656ns logic, 1.196ns route)
+                                       (58.1% logic, 41.9% route)
+
+=========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'c1/clk_vga'
   Total number of paths / destination ports: 270 / 10
 -------------------------------------------------------------------------
-Offset:              10.061ns (Levels of Logic = 5)
+Offset:              10.085ns (Levels of Logic = 5)
   Source:            generator/y_cnt_6 (FF)
   Destination:       vga_R<2> (PAD)
   Source Clock:      c1/clk_vga rising
@@ -594,15 +729,15 @@ Offset:              10.061ns (Levels of Logic = 5)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            21   0.525   1.586  generator/y_cnt_6 (generator/y_cnt_6)
+     FDRE:C->Q            22   0.525   1.610  generator/y_cnt_6 (generator/y_cnt_6)
      LUT5:I1->O            2   0.254   1.181  SF011 (SF01)
      LUT6:I0->O            1   0.254   1.112  generator/valid4 (generator/valid3)
      LUT6:I1->O            8   0.254   1.052  generator/valid5 (valid)
-     LUT2:I0->O            1   0.250   0.681  render/Mmux_vga_B21 (vga_B_1_OBUF)
-     OBUF:I->O                 2.912          vga_B_1_OBUF (vga_B<1>)
+     LUT2:I0->O            1   0.250   0.681  render/Mmux_vga_G31 (vga_G_2_OBUF)
+     OBUF:I->O                 2.912          vga_G_2_OBUF (vga_G<2>)
     ----------------------------------------
-    Total                     10.061ns (4.449ns logic, 5.612ns route)
-                                       (44.2% logic, 55.8% route)
+    Total                     10.085ns (4.449ns logic, 5.636ns route)
+                                       (44.1% logic, 55.9% route)
 
 =========================================================================
 
@@ -614,7 +749,17 @@ Clock to Setup on destination clock c1/clk_vga
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-c1/clk_vga     |   10.312|         |         |         |
+c1/clk_vga     |   10.345|         |         |         |
+c2/cnt_15      |    5.685|         |         |         |
+clk_100MHz     |    5.750|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock c2/cnt_15
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+c2/cnt_15      |    2.160|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clk_100MHz
@@ -629,13 +774,13 @@ clk_100MHz     |    2.833|         |         |         |
 
 
 Total REAL time to Xst completion: 16.00 secs
-Total CPU time to Xst completion: 16.64 secs
+Total CPU time to Xst completion: 15.55 secs
  
 --> 
 
 Total memory usage is 233004 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   72 (   0 filtered)
-Number of infos    :   14 (   0 filtered)
+Number of warnings :   62 (   0 filtered)
+Number of infos    :   10 (   0 filtered)
 

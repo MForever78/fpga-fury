@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sun Feb 01 16:35:39 2015
+// Written by: Map P.20131013 on Mon Feb 02 01:05:33 2015
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -7,6 +7,10 @@ COMP "clk_100MHz" LOCATE = SITE "V10" LEVEL 1;
 COMP "vga_R<0>" LOCATE = SITE "U7" LEVEL 1;
 COMP "vga_R<1>" LOCATE = SITE "V7" LEVEL 1;
 COMP "vga_R<2>" LOCATE = SITE "N7" LEVEL 1;
+COMP "btn<0>" LOCATE = SITE "A8" LEVEL 1;
+COMP "btn<1>" LOCATE = SITE "C9" LEVEL 1;
+COMP "btn<2>" LOCATE = SITE "C4" LEVEL 1;
+COMP "btn<3>" LOCATE = SITE "D9" LEVEL 1;
 COMP "vga_G<0>" LOCATE = SITE "P8" LEVEL 1;
 COMP "vga_G<1>" LOCATE = SITE "T6" LEVEL 1;
 COMP "vga_G<2>" LOCATE = SITE "V6" LEVEL 1;
