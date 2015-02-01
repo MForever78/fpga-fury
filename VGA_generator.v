@@ -1,10 +1,10 @@
 // VGA 640*480 60Hz
 
-module VGA_generator(clk, hsync, vsync, x_pos, y_pos, valid);
+module VGA_generator(clk, hsync, vsync, x_ptr, y_ptr, valid);
 
     input wire clk;
     output wire vsync, hsync, valid;
-    output wire [9: 0] x_pos, y_pos;
+    output wire [9: 0] x_ptr, y_ptr;
 
     reg [9: 0] x_cnt, y_cnt;
 
@@ -35,7 +35,7 @@ module VGA_generator(clk, hsync, vsync, x_pos, y_pos, valid);
     assign hsync = (x_cnt >= 10'd96) ? 1'b1 : 1'b0;
     assign vsync = (y_cnt >= 10'd2) ? 1'b1 : 1'b0;
 
-    assign x_pos = x_cnt - HBP;
-    assign y_pos = y_cnt - VBP;
+    assign x_ptr = x_cnt - HBP;
+    assign y_ptr = y_cnt - VBP;
 
 endmodule

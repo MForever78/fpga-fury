@@ -7,6 +7,7 @@ xc6slx16-csg324-2 top.ngc top.ngd
 
 Reading NGO file "Z:/share/ISE/fury/top.ngc" ...
 Loading design module "ipcore_dir/BG.ngc"...
+Loading design module "ipcore_dir/Hero_main_0.ngc"...
 Gathering constraint information from source properties...
 Done.
 
@@ -28,10 +29,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 172776 kilobytes
+Total memory usage is 172752 kilobytes
 
 Writing NGD file "top.ngd" ...
 Total REAL time to NGDBUILD completion:  6 sec
-Total CPU time to NGDBUILD completion:   4 sec
+Total CPU time to NGDBUILD completion:   5 sec
 
 Writing NGDBUILD log file "top.bld"...
