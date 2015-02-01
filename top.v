@@ -98,4 +98,13 @@ module top(clk_100MHz, btn, sw, segment, vsync, hsync, vga_R, vga_B, vga_G);
     Hero_left hero_left(.clka(clk_vga), .addra(addr_hero_left), .douta(data_hero_left));
     Hero_right hero_right(.clka(clk_vga), .addra(addr_hero_right), .douta(data_hero_right));
 
+    Monster_up_0 monster_up_0(.clka(clk_vga), addra(addr_monster_up_0), douta(data_monster_up_0));
+    Monster_up_1 monster_up_1(.clka(clk_vga), addra(addr_monster_up_1), douta(data_monster_up_1));
+    Monster_down_0 monster_down_0(.clka(clk_vga), addra(addr_monster_down_0), douta(data_monster_down_0));
+    Monster_down_1 monster_down_1(.clka(clk_vga), addra(addr_monster_down_1), douta(data_monster_down_1));
+    Monster_left_0 monster_left_0(.clka(clk_vga), addra(addr_monster_left_0), douta(data_monster_left_0));
+    Monster_left_1 monster_left_1(.clka(clk_vga), addra(addr_monster_left_1), douta(data_monster_left_1));
+    Monster_right_0 monster_right_0(.clka(clk_vga), addra(addr_monster_right_0), douta(data_monster_right_0));
+    Monster_right_1 monster_right_1(.clka(clk_vga), addra(addr_monster_right_1), douta(data_monster_right_1));
+
 endmodule

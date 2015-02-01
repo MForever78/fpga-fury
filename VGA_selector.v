@@ -26,7 +26,7 @@ module VGA_selector(clk, clk0, clk1, data0, data1, data2, data3, data4, data5, d
         HERO_HORI_H = 19,
         HERO_VERT_H = 16,
         MONS_W = 20,
-        MONS_H = 15;
+        MONS_H = 21;
 
     assign x_bg = (x_ptr - LEFT) / 2;
     assign y_bg = y_ptr / 2;
