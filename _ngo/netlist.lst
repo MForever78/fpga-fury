@@ -1,4 +1,4 @@
-Z:\share\ISE\fury\top.ngc 1422810299
+Z:\share\ISE\fury\top.ngc 1422941245
 ipcore_dir/BG.ngc 1422695204
 ipcore_dir/Hero_main_0.ngc 1422710678
 ipcore_dir/Hero_main_1.ngc 1422782190
@@ -6,4 +6,12 @@ ipcore_dir/Hero_up.ngc 1422807913
 ipcore_dir/Hero_down.ngc 1422808197
 ipcore_dir/Hero_left.ngc 1422803018
 ipcore_dir/Hero_right.ngc 1422808417
+ipcore_dir/Monster_up_0.ngc 1422938658
+ipcore_dir/Monster_up_1.ngc 1422939046
+ipcore_dir/Monster_down_0.ngc 1422939868
+ipcore_dir/Monster_down_1.ngc 1422940074
+ipcore_dir/Monster_left_0.ngc 1422814605
+ipcore_dir/Monster_left_1.ngc 1422815257
+ipcore_dir/Monster_right_0.ngc 1422816381
+ipcore_dir/Monster_right_1.ngc 1422816643
 OK

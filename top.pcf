@@ -1,22 +1,33 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Mon Feb 02 01:05:33 2015
+// Written by: Map P.20131013 on Tue Feb 03 13:28:02 2015
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "clk_100MHz" LOCATE = SITE "V10" LEVEL 1;
-COMP "vga_R<0>" LOCATE = SITE "U7" LEVEL 1;
-COMP "vga_R<1>" LOCATE = SITE "V7" LEVEL 1;
-COMP "vga_R<2>" LOCATE = SITE "N7" LEVEL 1;
+COMP "hsync" LOCATE = SITE "N6" LEVEL 1;
+COMP "power" LOCATE = SITE "B8" LEVEL 1;
+PIN power_pin<0> = BEL "power" PINNAME PAD;
+PIN "power_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "vsync" LOCATE = SITE "P7" LEVEL 1;
+COMP "Led<0>" LOCATE = SITE "U16" LEVEL 1;
+COMP "Led<1>" LOCATE = SITE "V16" LEVEL 1;
+COMP "Led<2>" LOCATE = SITE "U15" LEVEL 1;
+COMP "Led<3>" LOCATE = SITE "V15" LEVEL 1;
+COMP "Led<4>" LOCATE = SITE "M11" LEVEL 1;
+COMP "Led<5>" LOCATE = SITE "N11" LEVEL 1;
+COMP "Led<6>" LOCATE = SITE "R11" LEVEL 1;
+COMP "Led<7>" LOCATE = SITE "T11" LEVEL 1;
 COMP "btn<0>" LOCATE = SITE "A8" LEVEL 1;
 COMP "btn<1>" LOCATE = SITE "C9" LEVEL 1;
 COMP "btn<2>" LOCATE = SITE "C4" LEVEL 1;
 COMP "btn<3>" LOCATE = SITE "D9" LEVEL 1;
+COMP "vga_B<0>" LOCATE = SITE "R7" LEVEL 1;
+COMP "vga_B<1>" LOCATE = SITE "T7" LEVEL 1;
 COMP "vga_G<0>" LOCATE = SITE "P8" LEVEL 1;
 COMP "vga_G<1>" LOCATE = SITE "T6" LEVEL 1;
 COMP "vga_G<2>" LOCATE = SITE "V6" LEVEL 1;
-COMP "hsync" LOCATE = SITE "N6" LEVEL 1;
-COMP "vsync" LOCATE = SITE "P7" LEVEL 1;
-COMP "vga_B<0>" LOCATE = SITE "R7" LEVEL 1;
-COMP "vga_B<1>" LOCATE = SITE "T7" LEVEL 1;
+COMP "vga_R<0>" LOCATE = SITE "U7" LEVEL 1;
+COMP "vga_R<1>" LOCATE = SITE "V7" LEVEL 1;
+COMP "vga_R<2>" LOCATE = SITE "N7" LEVEL 1;
 SCHEMATIC END;
 

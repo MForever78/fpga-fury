@@ -31,23 +31,39 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
+Clock power to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+Led<0>      |        14.953(R)|      SLOW  |         7.358(R)|      FAST  |power_BUFGP       |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
 Clock to Setup on destination clock clk_100MHz
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_100MHz     |    2.444|         |         |         |
+clk_100MHz     |    2.261|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock power
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+power          |    1.065|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Mon Feb 02 01:06:01 2015 
+Analysis completed Tue Feb 03 13:28:32 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 234 MB
+Peak Memory Usage: 252 MB
 
 
 
