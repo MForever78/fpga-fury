@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Tue Feb 03 13:28:11 2015">
+  <application stringID="par" timeStamp="Wed Feb 11 17:21:40 2015">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -45,7 +45,7 @@
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz"/>
-          <item stringID="speed" value="2300 MHz"/>
+          <item stringID="speed" value="2302 MHz"/>
         </row>
       </table>
     </section>
@@ -59,12 +59,12 @@
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="11 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="11 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="19 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="18 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="13 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="13 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="22 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="21 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
@@ -2325,7 +2325,7 @@
     </task>
   </application>
 
-  <application stringID="Par" timeStamp="Tue Feb 03 13:28:11 2015">
+  <application stringID="Par" timeStamp="Wed Feb 11 17:21:41 2015">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -2365,22 +2365,22 @@
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz"/>
-          <item stringID="speed" value="2300 MHz"/>
+          <item stringID="speed" value="2302 MHz"/>
         </row>
       </table>
     </section>
     <task label="Device Utilization Summary" stringID="PAR_DEVICE_UTLIZATION">
       <section stringID="PAR_SLICE_REPORTING">
-        <item AVAILABLE="18224" dataType="int" label="Number of Slice Registers" stringID="PAR_SLICE_REGISTERS" value="204">
-          <item dataType="int" stringID="PAR_NUM_SLICE_FF" value="197"/>
+        <item AVAILABLE="18224" dataType="int" label="Number of Slice Registers" stringID="PAR_SLICE_REGISTERS" value="201">
+          <item dataType="int" stringID="PAR_NUM_SLICE_FF" value="194"/>
           <item dataType="int" stringID="PAR_NUM_SLICE_LATCH" value="0"/>
           <item dataType="int" stringID="PAR_NUM_SLICE_LATCHTHRU" value="0"/>
           <item dataType="int" stringID="PAR_NUM_SLICE_LATCHLOGIC" value="7"/>
         </item>
-        <item AVAILABLE="9112" dataType="int" label="Number of Slice LUTS" stringID="PAR_SLICE_LUTS" value="791">
+        <item AVAILABLE="9112" dataType="int" label="Number of Slice LUTS" stringID="PAR_SLICE_LUTS" value="790">
           <item dataType="int" stringID="PAR_NUM_LOGIC_O5ONLY" value="54"/>
-          <item dataType="int" stringID="PAR_NUM_LOGIC_O6ONLY" value="639"/>
-          <item dataType="int" stringID="PAR_NUM_LOGIC_O5ANDO6" value="94"/>
+          <item dataType="int" stringID="PAR_NUM_LOGIC_O6ONLY" value="637"/>
+          <item dataType="int" stringID="PAR_NUM_LOGIC_O5ANDO6" value="93"/>
           <item dataType="int" stringID="PAR_NUM_ROM_O5ONLY" value="0"/>
           <item dataType="int" stringID="PAR_NUM_ROM_O6ONLY" value="0"/>
           <item dataType="int" stringID="PAR_NUM_ROM_O5ANDO6" value="0"/>
@@ -2394,21 +2394,21 @@
           <item dataType="int" stringID="PAR_NUM_SRL_O6ONLY" value="0"/>
           <item dataType="int" stringID="PAR_NUM_SRL_O5ANDO6" value="0"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_EXO6" value="4"/>
-          <item dataType="int" stringID="PAR_NUM_LUT_RT_EXO5" value="0"/>
+          <item dataType="int" stringID="PAR_NUM_LUT_RT_EXO5" value="2"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_O5ANDO6" value="0"/>
-          <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_FLOP" value="0"/>
+          <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_FLOP" value="2"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_CARRY4" value="4"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
         </item>
-        <item AVAILABLE="2278" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="311">
+        <item AVAILABLE="2278" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="296">
           <item AVAILABLE="595" dataType="int" stringID="PAR_NUM_SLICEL" value="47"/>
           <item AVAILABLE="544" dataType="int" stringID="PAR_NUM_SLICEM" value="0"/>
-          <item AVAILABLE="1139" dataType="int" stringID="PAR_NUM_SLICEX" value="264"/>
+          <item AVAILABLE="1139" dataType="int" stringID="PAR_NUM_SLICEX" value="249"/>
         </item>
-        <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="814">
-          <item dataType="int" stringID="PAR_OCCUPIED_LUT_ONLY" value="610"/>
-          <item dataType="int" stringID="PAR_OCCUPIED_FF_ONLY" value="23"/>
-          <item dataType="int" stringID="PAR_OCCUPIED_FF_AND_LUT" value="181"/>
+        <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="810">
+          <item dataType="int" stringID="PAR_OCCUPIED_LUT_ONLY" value="611"/>
+          <item dataType="int" stringID="PAR_OCCUPIED_FF_ONLY" value="20"/>
+          <item dataType="int" stringID="PAR_OCCUPIED_FF_AND_LUT" value="179"/>
         </item>
       </section>
       <section stringID="PAR_IOB_REPORTING">

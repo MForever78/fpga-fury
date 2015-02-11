@@ -1,7 +1,7 @@
-module Clock_div(clk, clk_hero, clk_game, clk_move);
+module Clock_div(clk, clk_pace, clk_game, clk_move, clk_vga);
 
     input wire clk;
-    output wire clk_hero, clk_game, clk_move;
+    output wire clk_pace, clk_game, clk_move, clk_vga;
 
     reg [31: 0] cnt = 0;
 
@@ -9,8 +9,9 @@ module Clock_div(clk, clk_hero, clk_game, clk_move);
         cnt <= cnt + 1;
     end
 
-    assign clk_hero = cnt[25];
+    assign clk_pace = cnt[25];
     assign clk_game = cnt[15];
     assign clk_move = cnt[25];
+    assign clk_vga = cnt[1];
 
 endmodule

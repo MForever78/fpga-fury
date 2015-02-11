@@ -1,8 +1,8 @@
-module State_machine(clk_game, clk_move, state_hero, power, pressing, start, state_monsters, toggle);
+module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, state_monsters, toggle);
 
     input wire clk_game, clk_move, power, pressing;
     input wire [1: 0] state_hero;
-    output reg start, toggle;
+    output reg alive, toggle;
     output reg [227: 0] state_monsters;
 
     parameter
@@ -33,7 +33,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, start, sta
     initial begin
         cnt = 0;
         attack = 3'b100;
-        start = 0;
+        alive = 0;
         state_monsters = 0;
         toggle = 0;
         die = 0;
@@ -45,10 +45,10 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, start, sta
 
     always @(posedge clk_game) begin
         cnt <= cnt + 1;
-        start <= ~(|die) & toggle;
+        alive <= ~(|die) & toggle;
         pressed <= pressing;
 
-        if (start) begin
+        if (alive) begin
             if (pressing) begin
                 attack <= {1'b0, state_hero};
             end
@@ -65,7 +65,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, start, sta
     generate
         for (i = 0; i < MONSTERS; i = i + 1) begin
             always @(posedge clk_move) begin
-                if (!start) begin
+                if (!alive) begin
                     state_monsters[i * 19 + 18: i * 19] <= 0;
                 end
                 die[i] = 0;
