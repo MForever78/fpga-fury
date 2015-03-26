@@ -5,6 +5,10 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
     output reg alive, toggle;
     output reg [227: 0] state_monsters;
 
+    reg monsters_alive [MONSTERS - 1: 0];
+    reg [1: 0] monsters_direct [MONSTERS - 1: 0];
+    reg [7: 0] monsters_x [MONSTERS - 1: 0], monsters_y [MONSTERS -1: 0];
+
     parameter
         MONSTERS = 12,
         Y_DOWN_0 = 47,
