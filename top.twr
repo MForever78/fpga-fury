@@ -36,7 +36,7 @@ Clock power to Pad
             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
-Led<0>      |        15.308(R)|      SLOW  |         7.575(R)|      FAST  |power_BUFGP       |   0.000|
+Led<0>      |        15.046(R)|      SLOW  |         7.431(R)|      FAST  |power_BUFGP       |   0.000|
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk_100MHz
@@ -44,7 +44,7 @@ Clock to Setup on destination clock clk_100MHz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_100MHz     |    2.436|         |         |         |
+clk_100MHz     |    2.439|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock power
@@ -52,11 +52,11 @@ Clock to Setup on destination clock power
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-power          |    1.063|         |         |         |
+power          |    1.005|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sun Feb 15 17:50:32 2015 
+Analysis completed Fri Mar 27 09:16:34 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:

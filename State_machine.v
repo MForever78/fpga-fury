@@ -30,9 +30,13 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
     wire [15: 0] resurrect;
 
     reg [31: 0] cnt;
+    reg [31: 0] cnt_attack;
     reg [2: 0] attack;
     reg [11: 0] die;
     reg pressed;
+    reg toggled;
+    reg moved;
+    reg attacking;
 
     initial begin
         cnt = 0;
@@ -40,6 +44,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
         alive = 0;
         state_monsters = 0;
         toggle = 0;
+        toggled = 0;
         die = 0;
     end
 
@@ -49,15 +54,27 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
 
     always @(posedge clk_game) begin
         cnt <= cnt + 1;
-        alive <= ~(|die) & toggle;
-        pressed <= pressing;
 
+        toggled <= toggle;
+        if (toggled != toggle)
+            alive <= ~alive;
+        else
+            alive <= ~(|die) & alive;
+
+        pressed <= pressing;
         if (alive) begin
-            if (pressing) begin
-                attack <= {1'b0, state_hero};
+            if (!attacking) begin
+                if (pressing && !pressed) begin
+                    attack <= state_hero;
+                    attacking <= 1;
+                    cnt_attack <= 0;
+                end
+            end else begin
+                if (cnt_attack == 1000)
+                    attacking <= 0;
+                else
+                    cnt_attack <= cnt_attack + 1;
             end
-            else
-                attack <= 3'b100;
         end
 
     end
@@ -68,101 +85,126 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
     genvar i;
     generate
         for (i = 0; i < MONSTERS; i = i + 1) begin
-            always @(posedge clk_move) begin
+
+            always @(posedge clk_game) begin
                 if (!alive) begin
                     state_monsters[i * 19 + 18: i * 19] <= 0;
+                    die[i] <= 0;
                 end
-                die[i] = 0;
-                if (!state_monsters[i * 19] && resurrect[i]) begin
-                    state_monsters[i * 19] <= 1'b1;
-                    state_monsters[i * 19 + 2: i * 19 + 1] <= random;
-                    case (random)
+                if (state_monsters[i * 19] == 1) begin
+                    case (state_monsters[i * 19 + 2: i * 19 + 1])
                         2'b00: begin
-                            state_monsters[i * 19 + 10: i * 19 + 3] <= X_VERT;
-                            state_monsters[i * 19 + 18: i * 19 + 11] <= Y_UP_0;
+                            if (state_monsters[i * 19 + 18: i * 19 + 11] == Y_UP_2) begin
+                                if (attacking == 1'b1 && attack == 2'b01) begin
+                                    state_monsters[i * 19] <= 0;
+                                end
+                            end
                         end
                         2'b01: begin
-                            state_monsters[i * 19 + 10: i * 19 + 3] <= X_VERT;
-                            state_monsters[i * 19 + 18: i * 19 + 11] <= Y_DOWN_0;
+                            if (state_monsters[i * 19 + 18: i * 19 + 11] == Y_DOWN_2) begin
+                                if (attacking == 1'b1 && attack == 2'b00) begin
+                                    state_monsters[i * 19] <= 0;
+                                end
+                            end
                         end
                         2'b10: begin
-                            state_monsters[i * 19 + 10: i * 19 + 3] <= X_LEFT_0;
-                            state_monsters[i * 19 + 18: i * 19 + 11] <= Y_HORI;
+                            if (state_monsters[i * 19 + 10: i * 19 + 3] == X_LEFT_2) begin
+                                if (attacking == 1'b1 && attack == 2'b11) begin
+                                    state_monsters[i * 19] <= 0;
+                                end
+                            end
                         end
                         2'b11: begin
-                            state_monsters[i * 19 + 10: i * 19 + 3] <= X_RIGHT_0;
-                            state_monsters[i * 19 + 18: i * 19 + 11] <= Y_HORI;
+                            if (state_monsters[i * 19 + 10: i * 19 + 3] == X_RIGHT_2) begin
+                                if (attacking == 1'b1 && attack == 2'b10) begin
+                                    state_monsters[i * 19] <= 0;
+                                end
+                            end
                         end
                     endcase
                 end
 
-                if (state_monsters[i * 19] == 1) begin
-                    case (state_monsters[i * 19 + 2: i * 19 + 1])
-                        2'b00: begin
-                            case (state_monsters[i * 19 + 18: i * 19 + 11])
-                                Y_UP_0: begin
-                                    state_monsters[i * 19 + 18: i * 19 + 11] <= Y_UP_1;
-                                end
-                                Y_UP_1: begin
-                                    state_monsters[i * 19 + 18: i * 19 + 11] <= Y_UP_2;
-                                end
-                                Y_UP_2: begin
-                                    if (attack == 3'b001)
-                                        state_monsters[i * 19] <= 0;
-                                    else
-                                        die[i] = 1;
-                                end
-                            endcase
-                        end
-                        2'b01: begin
-                            case (state_monsters[i * 19 + 18: i * 19 + 11])
-                                Y_DOWN_0: begin
-                                    state_monsters[i * 19 + 18: i * 19 + 11] <= Y_DOWN_1;
-                                end
-                                Y_DOWN_1: begin
-                                    state_monsters[i * 19 + 18: i * 19 + 11] <= Y_DOWN_2;
-                                end
-                                Y_DOWN_2: begin
-                                    if (attack == 3'b000)
-                                        state_monsters[i * 19] <= 0;
-                                    else
-                                        die[i] = 1;
-                                end
-                            endcase
-                        end
-                        2'b10: begin
-                            case (state_monsters[i * 19 + 10: i * 19 + 3])
-                                X_LEFT_0: begin
-                                    state_monsters[i * 19 + 10: i * 19 + 3] <= X_LEFT_1;
-                                end
-                                X_LEFT_1: begin
-                                    state_monsters[i * 19 + 10: i * 19 + 3] <= X_LEFT_2;
-                                end
-                                X_LEFT_2: begin
-                                    if (attack == 3'b011)
-                                        state_monsters[i * 19] <= 0;
-                                    else
-                                        die[i] = 1;
-                                end
-                            endcase
-                        end
-                        2'b11: begin
-                            case (state_monsters[i * 19 + 10: i * 19 + 3])
-                                X_RIGHT_0: begin
-                                    state_monsters[i * 19 + 10: i * 19 + 3] <= X_RIGHT_1;
-                                end
-                                X_RIGHT_1: begin
-                                    state_monsters[i * 19 + 10: i * 19 + 3] <= X_RIGHT_2;
-                                end
-                                X_RIGHT_2: begin
-                                    if (attack == 3'b010)
-                                        state_monsters[i * 19] <= 0;
-                                    else
-                                        die[i] = 1;
-                                end
-                            endcase
-                        end
-                    endcase
+                moved <= clk_move;
+                if (clk_move && !moved) begin
+                    if (!state_monsters[i * 19] && resurrect[i]) begin
+                        state_monsters[i * 19] <= 1'b1;
+                        state_monsters[i * 19 + 2: i * 19 + 1] <= random;
+                        case (random)
+                            2'b00: begin
+                                state_monsters[i * 19 + 10: i * 19 + 3] <= X_VERT;
+                                state_monsters[i * 19 + 18: i * 19 + 11] <= Y_UP_0;
+                            end
+                            2'b01: begin
+                                state_monsters[i * 19 + 10: i * 19 + 3] <= X_VERT;
+                                state_monsters[i * 19 + 18: i * 19 + 11] <= Y_DOWN_0;
+                            end
+                            2'b10: begin
+                                state_monsters[i * 19 + 10: i * 19 + 3] <= X_LEFT_0;
+                                state_monsters[i * 19 + 18: i * 19 + 11] <= Y_HORI;
+                            end
+                            2'b11: begin
+                                state_monsters[i * 19 + 10: i * 19 + 3] <= X_RIGHT_0;
+                                state_monsters[i * 19 + 18: i * 19 + 11] <= Y_HORI;
+                            end
+                        endcase
+                    end
+
+                    if (state_monsters[i * 19] == 1) begin
+                        case (state_monsters[i * 19 + 2: i * 19 + 1])
+                            2'b00: begin
+                                case (state_monsters[i * 19 + 18: i * 19 + 11])
+                                    Y_UP_0: begin
+                                        state_monsters[i * 19 + 18: i * 19 + 11] <= Y_UP_1;
+                                    end
+                                    Y_UP_1: begin
+                                        state_monsters[i * 19 + 18: i * 19 + 11] <= Y_UP_2;
+                                    end
+                                    Y_UP_2: begin
+                                        die[i] <= 1;
+                                    end
+                                endcase
+                            end
+                            2'b01: begin
+                                case (state_monsters[i * 19 + 18: i * 19 + 11])
+                                    Y_DOWN_0: begin
+                                        state_monsters[i * 19 + 18: i * 19 + 11] <= Y_DOWN_1;
+                                    end
+                                    Y_DOWN_1: begin
+                                        state_monsters[i * 19 + 18: i * 19 + 11] <= Y_DOWN_2;
+                                    end
+                                    Y_DOWN_2: begin
+                                        die[i] <= 1;
+                                    end
+                                endcase
+                            end
+                            2'b10: begin
+                                case (state_monsters[i * 19 + 10: i * 19 + 3])
+                                    X_LEFT_0: begin
+                                        state_monsters[i * 19 + 10: i * 19 + 3] <= X_LEFT_1;
+                                    end
+                                    X_LEFT_1: begin
+                                        state_monsters[i * 19 + 10: i * 19 + 3] <= X_LEFT_2;
+                                    end
+                                    X_LEFT_2: begin
+                                        die[i] <= 1;
+                                    end
+                                endcase
+                            end
+                            2'b11: begin
+                                case (state_monsters[i * 19 + 10: i * 19 + 3])
+                                    X_RIGHT_0: begin
+                                        state_monsters[i * 19 + 10: i * 19 + 3] <= X_RIGHT_1;
+                                    end
+                                    X_RIGHT_1: begin
+                                        state_monsters[i * 19 + 10: i * 19 + 3] <= X_RIGHT_2;
+                                    end
+                                    X_RIGHT_2: begin
+                                        die[i] <= 1;
+                                    end
+                                endcase
+                            end
+                        endcase
+                    end
                 end
             end
         end
