@@ -27,7 +27,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
         X_RIGHT_2 = 54;
 
     wire [1: 0] random;
-    wire [15: 0] resurrect;
+    wire [11: 0] resurrect;
 
     reg [31: 0] cnt;
     reg [31: 0] cnt_attack;
@@ -53,7 +53,10 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
     end
 
     always @(posedge clk_game) begin
-        cnt <= cnt + 1;
+        if (pressing)
+            cnt <= cnt + 233;
+        else
+            cnt <= cnt + 1;
 
         toggled <= toggle;
         if (toggled != toggle)
@@ -63,24 +66,25 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
 
         pressed <= pressing;
         if (alive) begin
-            if (!attacking) begin
-                if (pressing && !pressed) begin
-                    attack <= state_hero;
-                    attacking <= 1;
-                    cnt_attack <= 0;
-                end
+            if (pressing && !pressed) begin
+                attack <= state_hero;
+                attacking <= 1;
+                cnt_attack <= 0;
             end else begin
-                if (cnt_attack == 1000)
-                    attacking <= 0;
-                else
-                    cnt_attack <= cnt_attack + 1;
+                if (attacking) begin
+                    if (cnt_attack == 500)
+                        attacking <= 0;
+                    else
+                        cnt_attack <= cnt_attack + 1;
+                end
             end
         end
 
     end
 
-    assign random = {cnt[13], cnt[12]};
-    assign resurrect = {cnt[9], cnt[15], cnt[3], cnt[8]};
+    assign random = {cnt[10], cnt[9]};
+    assign resurrect = {cnt[20], cnt[23], cnt[10], cnt[2], cnt[9], cnt[15], cnt[3], cnt[12], cnt[5], cnt[31], cnt[29], cnt[0]};
+    //Random randomize(clk_100MHz, toggle, cnt, random);
 
     genvar i;
     generate
