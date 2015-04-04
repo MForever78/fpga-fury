@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module top(clk_100MHz, btn, power, sw, segment, vsync, hsync, vga_R, vga_B, vga_G, Led);
+module top(clk_100MHz, btn, power, sw, segment, vsync, hsync, vga_R, vga_B, vga_G, Led, an);
 
     input wire clk_100MHz, power;
     input wire [3: 0] btn;
@@ -9,8 +9,16 @@ module top(clk_100MHz, btn, power, sw, segment, vsync, hsync, vga_R, vga_B, vga_
     output wire [2: 0] vga_R, vga_G;
     output wire [1: 0] vga_B;
     output wire [7: 0] Led;
+    output wire [3: 0] an;
 
-    wire clk_vga, valid, pressing, pressed, alive, toggle;
+    parameter
+        MONSTERS = 12;
+
+    wire clk_vga, valid, pressing, pressed, alive, toggle, power_stable;
+    wire [1: 0] scanning;
+    wire [3: 0] btn_stable;
+    wire [MONSTERS - 1: 0] score_pulse;
+    wire [15: 0] score;
     wire [9: 0] x_ptr, y_ptr;
     wire [7: 0] RGB, data_bg, data_hero_main_0, data_hero_main_1, data_hero_up, data_hero_down, data_hero_left, data_hero_right, data_monster_up_0, data_monster_up_1, data_monster_down_0, data_monster_down_1, data_monster_left_0, data_monster_left_1, data_monster_right_0, data_monster_right_1;
     wire [15: 0] addr_bg;
@@ -18,8 +26,16 @@ module top(clk_100MHz, btn, power, sw, segment, vsync, hsync, vga_R, vga_B, vga_
     wire [1: 0] state_hero, state_hero_old;
     wire [227: 0] state_monsters;
 
-    assign pressing = ^btn;
-    assign Led = {6'b000000, alive, toggle};
+    assign pressing = ^btn_stable;
+    assign Led = {6'b0000000, alive};
+
+    Debouncer deboncer(
+        .clk(clk_100MHz),
+        .btn(btn),
+        .btn_stable(btn_stable),
+        .power(power),
+        .power_stable(power_stable)
+    );
 
     // Generate several game ralated clocks:
     // clk_pace: used for determining the animation of charactors
@@ -30,7 +46,21 @@ module top(clk_100MHz, btn, power, sw, segment, vsync, hsync, vga_R, vga_B, vga_
         .clk_pace(clk_pace),
         .clk_game(clk_game),
         .clk_move(clk_move),
-        .clk_vga(clk_vga)
+        .clk_vga(clk_vga),
+        .clk_seg(scanning)
+    );
+
+    Score_counter(
+        .alive(alive),
+        .score_pulse(score_pulse),
+        .score(score)
+    );
+
+    Seven_seg seven_seg(
+        .scanning(scanning),
+        .score(score),
+        .segment(segment),
+        .an(an)
     );
 
     // Main state maintainer
@@ -38,17 +68,18 @@ module top(clk_100MHz, btn, power, sw, segment, vsync, hsync, vga_R, vga_B, vga_
         .clk_game(clk_game),
         .clk_move(clk_move),
         .state_hero(state_hero),
-        .power(power),
+        .power(power_stable),
         .pressing(pressing),
         .alive(alive),
         .toggle(toggle),
-        .state_monsters(state_monsters)
+        .state_monsters(state_monsters),
+        .score_pulse(score_pulse)
     );
 
     // Generate hero state asynchronously
     Hero_state hero_state(
         .clk(clk_game),
-        .btn(btn),
+        .btn(btn_stable),
         .old_state(state_hero_old),
         .state(state_hero)
     );

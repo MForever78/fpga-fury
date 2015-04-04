@@ -31,12 +31,27 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
-Clock power to Pad
+Setup/Hold to clock clk_100MHz
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+btn<0>      |    4.893(R)|      SLOW  |   -0.404(R)|      SLOW  |clk_100MHz_BUFGP  |   0.000|
+btn<1>      |    4.562(R)|      SLOW  |   -0.286(R)|      SLOW  |clk_100MHz_BUFGP  |   0.000|
+btn<2>      |    5.292(R)|      SLOW  |   -1.106(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
+btn<3>      |    4.019(R)|      SLOW  |   -0.627(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
+power       |    4.197(R)|      SLOW  |   -0.787(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clk_100MHz to Pad
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
-Led<0>      |        15.316(R)|      SLOW  |         7.581(R)|      FAST  |power_BUFGP       |   0.000|
+an<0>       |        11.581(R)|      SLOW  |         5.382(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
+an<1>       |        11.673(R)|      SLOW  |         5.461(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
+an<2>       |        11.259(R)|      SLOW  |         5.202(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
+an<3>       |        11.332(R)|      SLOW  |         5.286(R)|      FAST  |clk_100MHz_BUFGP  |   0.000|
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk_100MHz
@@ -44,19 +59,11 @@ Clock to Setup on destination clock clk_100MHz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_100MHz     |    2.328|         |         |         |
----------------+---------+---------+---------+---------+
-
-Clock to Setup on destination clock power
----------------+---------+---------+---------+---------+
-               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------+---------+---------+---------+---------+
-power          |    0.999|         |         |         |
+clk_100MHz     |    4.611|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Fri Mar 27 10:57:54 2015 
+Analysis completed Sat Apr 04 21:53:42 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:

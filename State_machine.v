@@ -1,9 +1,10 @@
-module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, state_monsters, toggle);
+module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, state_monsters, toggle, score_pulse);
 
     input wire clk_game, clk_move, power, pressing;
     input wire [1: 0] state_hero;
     output reg alive, toggle;
     output reg [227: 0] state_monsters;
+    output reg [MONSTERS - 1: 0] score_pulse;
 
     reg monsters_alive [MONSTERS - 1: 0];
     reg [1: 0] monsters_direct [MONSTERS - 1: 0];
@@ -59,8 +60,9 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
             cnt <= cnt + 1;
 
         toggled <= toggle;
-        if (toggled != toggle)
+        if (toggled != toggle) begin
             alive <= ~alive;
+        end
         else
             alive <= ~(|die) & alive;
 
@@ -101,6 +103,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
                             if (state_monsters[i * 19 + 18: i * 19 + 11] == Y_UP_2) begin
                                 if (attacking == 1'b1 && attack == 2'b01) begin
                                     state_monsters[i * 19] <= 0;
+                                    score_pulse[i] <= 1;
                                 end
                             end
                         end
@@ -108,6 +111,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
                             if (state_monsters[i * 19 + 18: i * 19 + 11] == Y_DOWN_2) begin
                                 if (attacking == 1'b1 && attack == 2'b00) begin
                                     state_monsters[i * 19] <= 0;
+                                    score_pulse[i] <= 1;
                                 end
                             end
                         end
@@ -115,6 +119,7 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
                             if (state_monsters[i * 19 + 10: i * 19 + 3] == X_LEFT_2) begin
                                 if (attacking == 1'b1 && attack == 2'b11) begin
                                     state_monsters[i * 19] <= 0;
+                                    score_pulse[i] <= 1;
                                 end
                             end
                         end
@@ -122,10 +127,13 @@ module State_machine(clk_game, clk_move, state_hero, power, pressing, alive, sta
                             if (state_monsters[i * 19 + 10: i * 19 + 3] == X_RIGHT_2) begin
                                 if (attacking == 1'b1 && attack == 2'b10) begin
                                     state_monsters[i * 19] <= 0;
+                                    score_pulse[i] <= 1;
                                 end
                             end
                         end
                     endcase
+                end else begin
+                    score_pulse[i] <= 0;
                 end
 
                 moved <= clk_move;

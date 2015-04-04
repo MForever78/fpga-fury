@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.17 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.18 secs
  
 --> Reading design: top.prj
 
@@ -118,7 +118,11 @@ Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\VGA_generato
 Parsing module <VGA_generator>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\State_machine.v" into library work
 Parsing module <State_machine>.
-WARNING:HDLCompiler:248 - "\\vmware-host\shared folders\share\ISE\fury\State_machine.v" Line 91: Block identifier is required on this block
+WARNING:HDLCompiler:248 - "\\vmware-host\shared folders\share\ISE\fury\State_machine.v" Line 93: Block identifier is required on this block
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Seven_seg.v" into library work
+Parsing module <Seven_seg>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Score_counter.v" into library work
+Parsing module <Score_counter>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Monster_up_1.v" into library work
 Parsing module <Monster_up_1>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\Monster_up_0.v" into library work
@@ -151,6 +155,8 @@ Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\ipcore_dir\B
 Parsing module <BG>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Hero_state.v" into library work
 Parsing module <Hero_state>.
+Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Debouncer.v" into library work
+Parsing module <Debouncer>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\Clock_div.v" into library work
 Parsing module <Clock_div>.
 Analyzing Verilog file "\\vmware-host\shared folders\share\ISE\fury\top.v" into library work
@@ -162,12 +168,24 @@ Parsing module <top>.
 
 Elaborating module <top>.
 
+Elaborating module <Debouncer>.
+
 Elaborating module <Clock_div>.
+WARNING:HDLCompiler:604 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 53: Module instantiation should have an instance name
+
+Elaborating module <Score_counter>.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\Score_counter.v" Line 26: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\Score_counter.v" Line 28: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\Score_counter.v" Line 30: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\Score_counter.v" Line 32: Result of 5-bit expression is truncated to fit in 4-bit target.
+
+Elaborating module <Seven_seg>.
 
 Elaborating module <State_machine>.
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 74: Assignment to toggle ignored, since the identifier is never used
 
 Elaborating module <Hero_state>.
-WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 52: Assignment to state_hero_old ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "\\vmware-host\shared folders\share\ISE\fury\top.v" Line 83: Assignment to state_hero_old ignored, since the identifier is never used
 
 Elaborating module <VGA_generator>.
 WARNING:HDLCompiler:413 - "\\vmware-host\shared folders\share\ISE\fury\VGA_generator.v" Line 23: Result of 11-bit expression is truncated to fit in 10-bit target.
@@ -234,19 +252,83 @@ WARNING:HDLCompiler:1499 - "\\vmware-host\shared folders\share\ISE\fury\ipcore_d
 
 Synthesizing Unit <top>.
     Related source file is "\\vmware-host\shared folders\share\ISE\fury\top.v".
+        MONSTERS = 12
 WARNING:Xst:647 - Input <sw> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 49: Output port <old_state> of the instance <hero_state> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 67: Output port <toggle> of the instance <state_machine> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vmware-host\shared folders\share\ISE\fury\top.v" line 80: Output port <old_state> of the instance <hero_state> is unconnected or connected to loadless signal.
     Summary:
 Unit <top> synthesized.
+
+Synthesizing Unit <Debouncer>.
+    Related source file is "\\vmware-host\shared folders\share\ISE\fury\Debouncer.v".
+    Found 32-bit register for signal <cnt>.
+    Found 5-bit register for signal <btns_stable>.
+    Found 5-bit register for signal <btns_temp>.
+    Found 32-bit adder for signal <cnt[31]_GND_2_o_add_5_OUT> created at line 25.
+    Found 5-bit comparator equal for signal <n0003> created at line 19
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  42 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <Debouncer> synthesized.
 
 Synthesizing Unit <Clock_div>.
     Related source file is "\\vmware-host\shared folders\share\ISE\fury\Clock_div.v".
     Found 32-bit register for signal <cnt>.
-    Found 32-bit adder for signal <cnt[31]_GND_2_o_add_1_OUT> created at line 9.
+    Found 32-bit adder for signal <cnt[31]_GND_3_o_add_1_OUT> created at line 10.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  32 D-type flip-flop(s).
 Unit <Clock_div> synthesized.
+
+Synthesizing Unit <Score_counter>.
+    Related source file is "\\vmware-host\shared folders\share\ISE\fury\Score_counter.v".
+    Found 1-bit register for signal <score<14>>.
+    Found 1-bit register for signal <score<13>>.
+    Found 1-bit register for signal <score<12>>.
+    Found 1-bit register for signal <score<11>>.
+    Found 1-bit register for signal <score<10>>.
+    Found 1-bit register for signal <score<9>>.
+    Found 1-bit register for signal <score<8>>.
+    Found 1-bit register for signal <score<7>>.
+    Found 1-bit register for signal <score<6>>.
+    Found 1-bit register for signal <score<5>>.
+    Found 1-bit register for signal <score<4>>.
+    Found 1-bit register for signal <score<3>>.
+    Found 1-bit register for signal <score<2>>.
+    Found 1-bit register for signal <score<1>>.
+    Found 1-bit register for signal <score<0>>.
+    Found 1-bit register for signal <score<15>>.
+    Found 4-bit adder for signal <score[15]_GND_4_o_add_5_OUT> created at line 26.
+    Found 4-bit adder for signal <score[11]_GND_4_o_add_7_OUT> created at line 28.
+    Found 4-bit adder for signal <score[7]_GND_4_o_add_9_OUT> created at line 30.
+    Found 4-bit adder for signal <score[3]_GND_4_o_add_11_OUT> created at line 32.
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred  16 D-type flip-flop(s).
+	inferred  16 Multiplexer(s).
+Unit <Score_counter> synthesized.
+
+Synthesizing Unit <Seven_seg>.
+    Related source file is "\\vmware-host\shared folders\share\ISE\fury\Seven_seg.v".
+    Found 4x4-bit Read Only RAM for signal <anode>
+    Found 1-bit 4-to-1 multiplexer for signal <digit<3>> created at line 34.
+    Found 1-bit 4-to-1 multiplexer for signal <digit<2>> created at line 34.
+    Found 1-bit 4-to-1 multiplexer for signal <digit<1>> created at line 34.
+    Found 1-bit 4-to-1 multiplexer for signal <digit<0>> created at line 34.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <digit_seg<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   8 Latch(s).
+	inferred   4 Multiplexer(s).
+Unit <Seven_seg> synthesized.
 
 Synthesizing Unit <State_machine>.
     Related source file is "\\vmware-host\shared folders\share\ISE\fury\State_machine.v".
@@ -292,6 +374,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<1>>.
     Found 1-bit register for signal <state_monsters<0>>.
     Found 1-bit register for signal <die<0>>.
+    Found 1-bit register for signal <score_pulse<0>>.
     Found 1-bit register for signal <moved>.
     Found 1-bit register for signal <state_monsters<37>>.
     Found 1-bit register for signal <state_monsters<36>>.
@@ -313,6 +396,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<20>>.
     Found 1-bit register for signal <state_monsters<19>>.
     Found 1-bit register for signal <die<1>>.
+    Found 1-bit register for signal <score_pulse<1>>.
     Found 1-bit register for signal <state_monsters<56>>.
     Found 1-bit register for signal <state_monsters<55>>.
     Found 1-bit register for signal <state_monsters<54>>.
@@ -333,6 +417,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<39>>.
     Found 1-bit register for signal <state_monsters<38>>.
     Found 1-bit register for signal <die<2>>.
+    Found 1-bit register for signal <score_pulse<2>>.
     Found 1-bit register for signal <state_monsters<75>>.
     Found 1-bit register for signal <state_monsters<74>>.
     Found 1-bit register for signal <state_monsters<73>>.
@@ -353,6 +438,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<58>>.
     Found 1-bit register for signal <state_monsters<57>>.
     Found 1-bit register for signal <die<3>>.
+    Found 1-bit register for signal <score_pulse<3>>.
     Found 1-bit register for signal <state_monsters<94>>.
     Found 1-bit register for signal <state_monsters<93>>.
     Found 1-bit register for signal <state_monsters<92>>.
@@ -373,6 +459,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<77>>.
     Found 1-bit register for signal <state_monsters<76>>.
     Found 1-bit register for signal <die<4>>.
+    Found 1-bit register for signal <score_pulse<4>>.
     Found 1-bit register for signal <state_monsters<113>>.
     Found 1-bit register for signal <state_monsters<112>>.
     Found 1-bit register for signal <state_monsters<111>>.
@@ -393,6 +480,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<96>>.
     Found 1-bit register for signal <state_monsters<95>>.
     Found 1-bit register for signal <die<5>>.
+    Found 1-bit register for signal <score_pulse<5>>.
     Found 1-bit register for signal <state_monsters<132>>.
     Found 1-bit register for signal <state_monsters<131>>.
     Found 1-bit register for signal <state_monsters<130>>.
@@ -413,6 +501,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<115>>.
     Found 1-bit register for signal <state_monsters<114>>.
     Found 1-bit register for signal <die<6>>.
+    Found 1-bit register for signal <score_pulse<6>>.
     Found 1-bit register for signal <state_monsters<151>>.
     Found 1-bit register for signal <state_monsters<150>>.
     Found 1-bit register for signal <state_monsters<149>>.
@@ -433,6 +522,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<134>>.
     Found 1-bit register for signal <state_monsters<133>>.
     Found 1-bit register for signal <die<7>>.
+    Found 1-bit register for signal <score_pulse<7>>.
     Found 1-bit register for signal <state_monsters<170>>.
     Found 1-bit register for signal <state_monsters<169>>.
     Found 1-bit register for signal <state_monsters<168>>.
@@ -453,6 +543,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<153>>.
     Found 1-bit register for signal <state_monsters<152>>.
     Found 1-bit register for signal <die<8>>.
+    Found 1-bit register for signal <score_pulse<8>>.
     Found 1-bit register for signal <state_monsters<189>>.
     Found 1-bit register for signal <state_monsters<188>>.
     Found 1-bit register for signal <state_monsters<187>>.
@@ -473,6 +564,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<172>>.
     Found 1-bit register for signal <state_monsters<171>>.
     Found 1-bit register for signal <die<9>>.
+    Found 1-bit register for signal <score_pulse<9>>.
     Found 1-bit register for signal <state_monsters<208>>.
     Found 1-bit register for signal <state_monsters<207>>.
     Found 1-bit register for signal <state_monsters<206>>.
@@ -493,6 +585,7 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<191>>.
     Found 1-bit register for signal <state_monsters<190>>.
     Found 1-bit register for signal <die<10>>.
+    Found 1-bit register for signal <score_pulse<10>>.
     Found 1-bit register for signal <state_monsters<227>>.
     Found 1-bit register for signal <state_monsters<226>>.
     Found 1-bit register for signal <state_monsters<225>>.
@@ -513,234 +606,247 @@ Synthesizing Unit <State_machine>.
     Found 1-bit register for signal <state_monsters<210>>.
     Found 1-bit register for signal <state_monsters<209>>.
     Found 1-bit register for signal <die<11>>.
+    Found 1-bit register for signal <score_pulse<11>>.
     Found 1-bit register for signal <toggle>.
-    Found 32-bit adder for signal <cnt[31]_GND_3_o_add_2_OUT> created at line 57.
-    Found 32-bit adder for signal <cnt[31]_GND_3_o_add_3_OUT> created at line 59.
-    Found 32-bit adder for signal <cnt_attack[31]_GND_3_o_add_8_OUT> created at line 78.
-    Found 4x6-bit Read Only RAM for signal <_n5097>
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[2]_state_monsters[0]_Mux_34_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[18]_Mux_74_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[17]_Mux_75_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[16]_Mux_76_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[15]_Mux_77_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[14]_Mux_78_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[13]_Mux_79_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[12]_Mux_80_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[11]_Mux_81_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[10]_Mux_82_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[9]_Mux_83_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[8]_Mux_84_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[10]_Mux_85_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[6]_Mux_86_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[10]_Mux_87_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[4]_Mux_88_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[3]_Mux_89_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[2]_die[0]_Mux_90_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[21]_state_monsters[19]_Mux_105_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[37]_Mux_145_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[36]_Mux_146_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[35]_Mux_147_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[34]_Mux_148_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[33]_Mux_149_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[32]_Mux_150_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[31]_Mux_151_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[30]_Mux_152_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[29]_Mux_153_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[28]_Mux_154_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[27]_Mux_155_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[29]_Mux_156_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[25]_Mux_157_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[29]_Mux_158_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[23]_Mux_159_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[22]_Mux_160_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[21]_die[1]_Mux_161_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[40]_state_monsters[38]_Mux_177_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[56]_Mux_217_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[55]_Mux_218_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[54]_Mux_219_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[53]_Mux_220_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[52]_Mux_221_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[51]_Mux_222_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[50]_Mux_223_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[49]_Mux_224_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[48]_Mux_225_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[47]_Mux_226_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[46]_Mux_227_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[48]_Mux_228_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[44]_Mux_229_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[48]_Mux_230_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[42]_Mux_231_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[41]_Mux_232_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[40]_die[2]_Mux_233_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[59]_state_monsters[57]_Mux_249_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[75]_Mux_289_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[74]_Mux_290_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[73]_Mux_291_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[72]_Mux_292_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[71]_Mux_293_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[70]_Mux_294_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[69]_Mux_295_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[68]_Mux_296_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[67]_Mux_297_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[66]_Mux_298_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[65]_Mux_299_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[67]_Mux_300_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[63]_Mux_301_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[67]_Mux_302_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[61]_Mux_303_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[60]_Mux_304_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[59]_die[3]_Mux_305_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[78]_state_monsters[76]_Mux_321_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[94]_Mux_361_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[93]_Mux_362_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[92]_Mux_363_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[91]_Mux_364_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[90]_Mux_365_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[89]_Mux_366_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[88]_Mux_367_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[87]_Mux_368_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[86]_Mux_369_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[85]_Mux_370_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[84]_Mux_371_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[86]_Mux_372_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[82]_Mux_373_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[86]_Mux_374_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[80]_Mux_375_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[79]_Mux_376_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[78]_die[4]_Mux_377_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[97]_state_monsters[95]_Mux_393_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[113]_Mux_433_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[112]_Mux_434_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[111]_Mux_435_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[110]_Mux_436_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[109]_Mux_437_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[108]_Mux_438_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[107]_Mux_439_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[106]_Mux_440_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[105]_Mux_441_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[104]_Mux_442_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[103]_Mux_443_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[105]_Mux_444_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[101]_Mux_445_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[105]_Mux_446_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[99]_Mux_447_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[98]_Mux_448_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[97]_die[5]_Mux_449_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[116]_state_monsters[114]_Mux_465_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[132]_Mux_505_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[131]_Mux_506_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[130]_Mux_507_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[129]_Mux_508_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[128]_Mux_509_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[127]_Mux_510_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[126]_Mux_511_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[125]_Mux_512_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[124]_Mux_513_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[123]_Mux_514_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[122]_Mux_515_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[124]_Mux_516_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[120]_Mux_517_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[124]_Mux_518_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[118]_Mux_519_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[117]_Mux_520_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[116]_die[6]_Mux_521_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[135]_state_monsters[133]_Mux_537_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[151]_Mux_577_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[150]_Mux_578_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[149]_Mux_579_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[148]_Mux_580_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[147]_Mux_581_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[146]_Mux_582_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[145]_Mux_583_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[144]_Mux_584_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[143]_Mux_585_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[142]_Mux_586_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[141]_Mux_587_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[143]_Mux_588_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[139]_Mux_589_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[143]_Mux_590_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[137]_Mux_591_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[136]_Mux_592_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[135]_die[7]_Mux_593_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[154]_state_monsters[152]_Mux_609_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[170]_Mux_649_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[169]_Mux_650_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[168]_Mux_651_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[167]_Mux_652_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[166]_Mux_653_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[165]_Mux_654_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[164]_Mux_655_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[163]_Mux_656_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[162]_Mux_657_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[161]_Mux_658_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[160]_Mux_659_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[162]_Mux_660_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[158]_Mux_661_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[162]_Mux_662_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[156]_Mux_663_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[155]_Mux_664_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[154]_die[8]_Mux_665_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[173]_state_monsters[171]_Mux_681_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[189]_Mux_721_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[188]_Mux_722_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[187]_Mux_723_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[186]_Mux_724_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[185]_Mux_725_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[184]_Mux_726_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[183]_Mux_727_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[182]_Mux_728_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[181]_Mux_729_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[180]_Mux_730_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[179]_Mux_731_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[181]_Mux_732_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[177]_Mux_733_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[181]_Mux_734_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[175]_Mux_735_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[174]_Mux_736_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[173]_die[9]_Mux_737_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[192]_state_monsters[190]_Mux_753_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[208]_Mux_793_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[207]_Mux_794_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[206]_Mux_795_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[205]_Mux_796_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[204]_Mux_797_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[203]_Mux_798_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[202]_Mux_799_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[201]_Mux_800_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[200]_Mux_801_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[199]_Mux_802_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[198]_Mux_803_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[200]_Mux_804_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[196]_Mux_805_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[200]_Mux_806_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[194]_Mux_807_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[193]_Mux_808_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[192]_die[10]_Mux_809_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[211]_state_monsters[209]_Mux_825_o> created at line 99.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[227]_Mux_865_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[226]_Mux_866_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[225]_Mux_867_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[224]_Mux_868_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[223]_Mux_869_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[222]_Mux_870_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[221]_Mux_871_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[220]_Mux_872_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[219]_Mux_873_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[218]_Mux_874_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[217]_Mux_875_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[219]_Mux_876_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[215]_Mux_877_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[219]_Mux_878_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[213]_Mux_879_o> created at line 157.
-    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[212]_Mux_880_o> created at line 157.
-    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[211]_die[11]_Mux_881_o> created at line 157.
-    Found 1-bit comparator not equal for signal <n0005> created at line 62
+    Found 32-bit adder for signal <cnt[31]_GND_14_o_add_2_OUT> created at line 58.
+    Found 32-bit adder for signal <cnt[31]_GND_14_o_add_3_OUT> created at line 60.
+    Found 32-bit adder for signal <cnt_attack[31]_GND_14_o_add_8_OUT> created at line 80.
+    Found 4x6-bit Read Only RAM for signal <_n5236>
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[2]_state_monsters[0]_Mux_34_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[2]_score_pulse[0]_Mux_35_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[18]_Mux_75_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[17]_Mux_76_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[16]_Mux_77_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[15]_Mux_78_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[14]_Mux_79_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[13]_Mux_80_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[12]_Mux_81_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[11]_Mux_82_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[10]_Mux_83_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[9]_Mux_84_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[8]_Mux_85_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[10]_Mux_86_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[6]_Mux_87_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[10]_Mux_88_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[4]_Mux_89_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[2]_state_monsters[3]_Mux_90_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[2]_die[0]_Mux_91_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[21]_state_monsters[19]_Mux_106_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[21]_score_pulse[1]_Mux_107_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[37]_Mux_147_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[36]_Mux_148_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[35]_Mux_149_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[34]_Mux_150_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[33]_Mux_151_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[32]_Mux_152_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[31]_Mux_153_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[30]_Mux_154_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[29]_Mux_155_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[28]_Mux_156_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[27]_Mux_157_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[29]_Mux_158_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[25]_Mux_159_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[29]_Mux_160_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[23]_Mux_161_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[21]_state_monsters[22]_Mux_162_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[21]_die[1]_Mux_163_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[40]_state_monsters[38]_Mux_179_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[40]_score_pulse[2]_Mux_180_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[56]_Mux_220_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[55]_Mux_221_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[54]_Mux_222_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[53]_Mux_223_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[52]_Mux_224_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[51]_Mux_225_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[50]_Mux_226_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[49]_Mux_227_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[48]_Mux_228_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[47]_Mux_229_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[46]_Mux_230_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[48]_Mux_231_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[44]_Mux_232_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[48]_Mux_233_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[42]_Mux_234_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[40]_state_monsters[41]_Mux_235_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[40]_die[2]_Mux_236_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[59]_state_monsters[57]_Mux_252_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[59]_score_pulse[3]_Mux_253_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[75]_Mux_293_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[74]_Mux_294_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[73]_Mux_295_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[72]_Mux_296_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[71]_Mux_297_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[70]_Mux_298_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[69]_Mux_299_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[68]_Mux_300_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[67]_Mux_301_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[66]_Mux_302_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[65]_Mux_303_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[67]_Mux_304_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[63]_Mux_305_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[67]_Mux_306_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[61]_Mux_307_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[59]_state_monsters[60]_Mux_308_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[59]_die[3]_Mux_309_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[78]_state_monsters[76]_Mux_325_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[78]_score_pulse[4]_Mux_326_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[94]_Mux_366_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[93]_Mux_367_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[92]_Mux_368_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[91]_Mux_369_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[90]_Mux_370_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[89]_Mux_371_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[88]_Mux_372_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[87]_Mux_373_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[86]_Mux_374_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[85]_Mux_375_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[84]_Mux_376_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[86]_Mux_377_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[82]_Mux_378_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[86]_Mux_379_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[80]_Mux_380_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[78]_state_monsters[79]_Mux_381_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[78]_die[4]_Mux_382_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[97]_state_monsters[95]_Mux_398_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[97]_score_pulse[5]_Mux_399_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[113]_Mux_439_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[112]_Mux_440_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[111]_Mux_441_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[110]_Mux_442_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[109]_Mux_443_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[108]_Mux_444_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[107]_Mux_445_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[106]_Mux_446_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[105]_Mux_447_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[104]_Mux_448_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[103]_Mux_449_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[105]_Mux_450_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[101]_Mux_451_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[105]_Mux_452_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[99]_Mux_453_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[97]_state_monsters[98]_Mux_454_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[97]_die[5]_Mux_455_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[116]_state_monsters[114]_Mux_471_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[116]_score_pulse[6]_Mux_472_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[132]_Mux_512_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[131]_Mux_513_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[130]_Mux_514_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[129]_Mux_515_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[128]_Mux_516_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[127]_Mux_517_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[126]_Mux_518_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[125]_Mux_519_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[124]_Mux_520_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[123]_Mux_521_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[122]_Mux_522_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[124]_Mux_523_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[120]_Mux_524_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[124]_Mux_525_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[118]_Mux_526_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[116]_state_monsters[117]_Mux_527_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[116]_die[6]_Mux_528_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[135]_state_monsters[133]_Mux_544_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[135]_score_pulse[7]_Mux_545_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[151]_Mux_585_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[150]_Mux_586_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[149]_Mux_587_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[148]_Mux_588_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[147]_Mux_589_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[146]_Mux_590_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[145]_Mux_591_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[144]_Mux_592_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[143]_Mux_593_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[142]_Mux_594_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[141]_Mux_595_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[143]_Mux_596_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[139]_Mux_597_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[143]_Mux_598_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[137]_Mux_599_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[135]_state_monsters[136]_Mux_600_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[135]_die[7]_Mux_601_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[154]_state_monsters[152]_Mux_617_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[154]_score_pulse[8]_Mux_618_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[170]_Mux_658_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[169]_Mux_659_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[168]_Mux_660_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[167]_Mux_661_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[166]_Mux_662_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[165]_Mux_663_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[164]_Mux_664_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[163]_Mux_665_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[162]_Mux_666_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[161]_Mux_667_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[160]_Mux_668_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[162]_Mux_669_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[158]_Mux_670_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[162]_Mux_671_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[156]_Mux_672_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[154]_state_monsters[155]_Mux_673_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[154]_die[8]_Mux_674_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[173]_state_monsters[171]_Mux_690_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[173]_score_pulse[9]_Mux_691_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[189]_Mux_731_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[188]_Mux_732_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[187]_Mux_733_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[186]_Mux_734_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[185]_Mux_735_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[184]_Mux_736_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[183]_Mux_737_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[182]_Mux_738_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[181]_Mux_739_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[180]_Mux_740_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[179]_Mux_741_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[181]_Mux_742_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[177]_Mux_743_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[181]_Mux_744_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[175]_Mux_745_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[173]_state_monsters[174]_Mux_746_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[173]_die[9]_Mux_747_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[192]_state_monsters[190]_Mux_763_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[192]_score_pulse[10]_Mux_764_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[208]_Mux_804_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[207]_Mux_805_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[206]_Mux_806_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[205]_Mux_807_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[204]_Mux_808_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[203]_Mux_809_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[202]_Mux_810_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[201]_Mux_811_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[200]_Mux_812_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[199]_Mux_813_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[198]_Mux_814_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[200]_Mux_815_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[196]_Mux_816_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[200]_Mux_817_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[194]_Mux_818_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[192]_state_monsters[193]_Mux_819_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[192]_die[10]_Mux_820_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[211]_state_monsters[209]_Mux_836_o> created at line 101.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[211]_score_pulse[11]_Mux_837_o> created at line 101.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[227]_Mux_877_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[226]_Mux_878_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[225]_Mux_879_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[224]_Mux_880_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[223]_Mux_881_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[222]_Mux_882_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[221]_Mux_883_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[220]_Mux_884_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[219]_Mux_885_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[218]_Mux_886_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[217]_Mux_887_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[219]_Mux_888_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[215]_Mux_889_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[219]_Mux_890_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[213]_Mux_891_o> created at line 165.
+    Found 1-bit 3-to-1 multiplexer for signal <state_monsters[211]_state_monsters[212]_Mux_892_o> created at line 165.
+    Found 1-bit 4-to-1 multiplexer for signal <state_monsters[211]_die[11]_Mux_893_o> created at line 165.
+    Found 1-bit comparator not equal for signal <n0005> created at line 63
     Summary:
 	inferred   1 RAM(s).
 	inferred   2 Adder/Subtractor(s).
-	inferred 313 D-type flip-flop(s).
+	inferred 325 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred 1550 Multiplexer(s).
+	inferred 1658 Multiplexer(s).
 Unit <State_machine> synthesized.
 
 Synthesizing Unit <Hero_state>.
@@ -763,12 +869,12 @@ Synthesizing Unit <VGA_generator>.
     Found 10-bit register for signal <x_cnt>.
     Found 10-bit subtractor for signal <x_ptr> created at line 38.
     Found 10-bit subtractor for signal <y_ptr> created at line 39.
-    Found 10-bit adder for signal <x_cnt[9]_GND_5_o_add_2_OUT> created at line 23.
-    Found 10-bit adder for signal <y_cnt[9]_GND_5_o_add_8_OUT> created at line 30.
-    Found 10-bit comparator greater for signal <GND_5_o_x_cnt[9]_LessThan_13_o> created at line 33
-    Found 10-bit comparator greater for signal <x_cnt[9]_PWR_5_o_LessThan_14_o> created at line 33
-    Found 10-bit comparator greater for signal <GND_5_o_y_cnt[9]_LessThan_15_o> created at line 33
-    Found 10-bit comparator greater for signal <y_cnt[9]_GND_5_o_LessThan_16_o> created at line 33
+    Found 10-bit adder for signal <x_cnt[9]_GND_16_o_add_2_OUT> created at line 23.
+    Found 10-bit adder for signal <y_cnt[9]_GND_16_o_add_8_OUT> created at line 30.
+    Found 10-bit comparator greater for signal <GND_16_o_x_cnt[9]_LessThan_13_o> created at line 33
+    Found 10-bit comparator greater for signal <x_cnt[9]_PWR_16_o_LessThan_14_o> created at line 33
+    Found 10-bit comparator greater for signal <GND_16_o_y_cnt[9]_LessThan_15_o> created at line 33
+    Found 10-bit comparator greater for signal <y_cnt[9]_GND_16_o_LessThan_16_o> created at line 33
     Found 10-bit comparator lessequal for signal <n0015> created at line 35
     Found 10-bit comparator lessequal for signal <n0017> created at line 36
     Summary:
@@ -806,14 +912,14 @@ WARNING:Xst:647 - Input <clk_pace> is never used. This port will be preserved an
     Found 5-bit subtractor for signal <y_hero> created at line 14.
     Found 8-bit 4-to-1 multiplexer for signal <state_hero[1]_data_bg[7]_wide_mux_59_OUT> created at line 125.
     Found 10-bit comparator lessequal for signal <n0011> created at line 44
-    Found 10-bit comparator greater for signal <x_ptr[9]_GND_6_o_LessThan_13_o> created at line 44
-    Found 10-bit comparator greater for signal <y_ptr[9]_GND_6_o_LessThan_14_o> created at line 44
+    Found 10-bit comparator greater for signal <x_ptr[9]_GND_17_o_LessThan_13_o> created at line 44
+    Found 10-bit comparator greater for signal <y_ptr[9]_GND_17_o_LessThan_14_o> created at line 44
     Found 8-bit comparator lessequal for signal <n0017> created at line 45
-    Found 8-bit comparator greater for signal <x_bg[7]_GND_6_o_LessThan_16_o> created at line 45
+    Found 8-bit comparator greater for signal <x_bg[7]_GND_17_o_LessThan_16_o> created at line 45
     Found 8-bit comparator lessequal for signal <n0021> created at line 45
-    Found 8-bit comparator greater for signal <y_bg[7]_GND_6_o_LessThan_18_o> created at line 45
-    Found 8-bit comparator greater for signal <y_bg[7]_PWR_7_o_LessThan_26_o> created at line 47
-    Found 8-bit comparator greater for signal <y_bg[7]_PWR_7_o_LessThan_34_o> created at line 49
+    Found 8-bit comparator greater for signal <y_bg[7]_GND_17_o_LessThan_18_o> created at line 45
+    Found 8-bit comparator greater for signal <y_bg[7]_PWR_18_o_LessThan_26_o> created at line 47
+    Found 8-bit comparator greater for signal <y_bg[7]_PWR_18_o_LessThan_34_o> created at line 49
     Summary:
 	inferred  10 Adder/Subtractor(s).
 	inferred   8 D-type flip-flop(s).
@@ -877,53 +983,53 @@ Synthesizing Unit <Monster_state_calculator>.
     Found 12-bit adder for signal <n0594> created at line 60.
     Found 12-bit adder for signal <addr> created at line 60.
     Found 8-bit comparator lessequal for signal <n0000> created at line 17
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0001_LessThan_3_o> created at line 17
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0001_LessThan_3_o> created at line 17
     Found 8-bit comparator lessequal for signal <n0006> created at line 17
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0002_LessThan_6_o> created at line 17
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0002_LessThan_6_o> created at line 17
     Found 8-bit comparator lessequal for signal <n0012> created at line 18
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0003_LessThan_9_o> created at line 18
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0003_LessThan_9_o> created at line 18
     Found 8-bit comparator lessequal for signal <n0018> created at line 18
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0004_LessThan_12_o> created at line 18
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0004_LessThan_12_o> created at line 18
     Found 8-bit comparator lessequal for signal <n0024> created at line 19
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0005_LessThan_15_o> created at line 19
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0005_LessThan_15_o> created at line 19
     Found 8-bit comparator lessequal for signal <n0030> created at line 19
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0006_LessThan_18_o> created at line 19
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0006_LessThan_18_o> created at line 19
     Found 8-bit comparator lessequal for signal <n0036> created at line 20
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0007_LessThan_21_o> created at line 20
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0007_LessThan_21_o> created at line 20
     Found 8-bit comparator lessequal for signal <n0042> created at line 20
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0008_LessThan_24_o> created at line 20
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0008_LessThan_24_o> created at line 20
     Found 8-bit comparator lessequal for signal <n0048> created at line 21
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0009_LessThan_27_o> created at line 21
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0009_LessThan_27_o> created at line 21
     Found 8-bit comparator lessequal for signal <n0054> created at line 21
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0010_LessThan_30_o> created at line 21
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0010_LessThan_30_o> created at line 21
     Found 8-bit comparator lessequal for signal <n0060> created at line 22
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0011_LessThan_33_o> created at line 22
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0011_LessThan_33_o> created at line 22
     Found 8-bit comparator lessequal for signal <n0066> created at line 22
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0012_LessThan_36_o> created at line 22
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0012_LessThan_36_o> created at line 22
     Found 8-bit comparator lessequal for signal <n0072> created at line 23
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0013_LessThan_39_o> created at line 23
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0013_LessThan_39_o> created at line 23
     Found 8-bit comparator lessequal for signal <n0078> created at line 23
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0014_LessThan_42_o> created at line 23
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0014_LessThan_42_o> created at line 23
     Found 8-bit comparator lessequal for signal <n0084> created at line 24
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0015_LessThan_45_o> created at line 24
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0015_LessThan_45_o> created at line 24
     Found 8-bit comparator lessequal for signal <n0090> created at line 24
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0016_LessThan_48_o> created at line 24
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0016_LessThan_48_o> created at line 24
     Found 8-bit comparator lessequal for signal <n0096> created at line 25
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0017_LessThan_51_o> created at line 25
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0017_LessThan_51_o> created at line 25
     Found 8-bit comparator lessequal for signal <n0102> created at line 25
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0018_LessThan_54_o> created at line 25
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0018_LessThan_54_o> created at line 25
     Found 8-bit comparator lessequal for signal <n0108> created at line 26
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0019_LessThan_57_o> created at line 26
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0019_LessThan_57_o> created at line 26
     Found 8-bit comparator lessequal for signal <n0114> created at line 26
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0020_LessThan_60_o> created at line 26
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0020_LessThan_60_o> created at line 26
     Found 8-bit comparator lessequal for signal <n0120> created at line 27
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0021_LessThan_63_o> created at line 27
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0021_LessThan_63_o> created at line 27
     Found 8-bit comparator lessequal for signal <n0126> created at line 27
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0022_LessThan_66_o> created at line 27
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0022_LessThan_66_o> created at line 27
     Found 8-bit comparator lessequal for signal <n0132> created at line 28
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0023_LessThan_69_o> created at line 28
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0023_LessThan_69_o> created at line 28
     Found 8-bit comparator lessequal for signal <n0138> created at line 28
-    Found 9-bit comparator greater for signal <GND_7_o_BUS_0024_LessThan_72_o> created at line 28
+    Found 9-bit comparator greater for signal <GND_18_o_BUS_0024_LessThan_72_o> created at line 28
     Summary:
 	inferred  50 Adder/Subtractor(s).
 	inferred  48 Comparator(s).
@@ -939,36 +1045,42 @@ Unit <VGA_render> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 1
+# RAMs                                                 : 2
+ 4x4-bit single-port Read Only RAM                     : 1
  4x6-bit single-port Read Only RAM                     : 1
-# Adders/Subtractors                                   : 67
+# Adders/Subtractors                                   : 72
  10-bit adder                                          : 2
  10-bit subtractor                                     : 2
  11-bit subtractor                                     : 1
  12-bit adder                                          : 2
  16-bit adder                                          : 4
- 32-bit adder                                          : 3
+ 32-bit adder                                          : 4
+ 4-bit adder                                           : 4
  5-bit subtractor                                      : 2
  8-bit subtractor                                      : 24
  9-bit adder                                           : 27
-# Registers                                            : 255
- 1-bit register                                        : 246
+# Registers                                            : 286
+ 1-bit register                                        : 274
  10-bit register                                       : 2
  2-bit register                                        : 2
  3-bit register                                        : 1
- 32-bit register                                       : 3
+ 32-bit register                                       : 4
+ 5-bit register                                        : 2
  8-bit register                                        : 1
-# Comparators                                          : 64
+# Latches                                              : 8
+ 1-bit latch                                           : 8
+# Comparators                                          : 65
  1-bit comparator not equal                            : 1
  10-bit comparator greater                             : 6
  10-bit comparator lessequal                           : 3
+ 5-bit comparator equal                                : 1
  8-bit comparator greater                              : 4
  8-bit comparator lessequal                            : 26
  9-bit comparator greater                              : 24
-# Multiplexers                                         : 1570
- 1-bit 2-to-1 multiplexer                              : 1333
+# Multiplexers                                         : 1698
+ 1-bit 2-to-1 multiplexer                              : 1445
  1-bit 3-to-1 multiplexer                              : 192
- 1-bit 4-to-1 multiplexer                              : 24
+ 1-bit 4-to-1 multiplexer                              : 40
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
  32-bit 2-to-1 multiplexer                             : 1
@@ -1016,15 +1128,34 @@ Loading core <Monster_right_0> for timing and area information for instance <mon
 Loading core <Monster_right_1> for timing and area information for instance <monster_right_1>.
 WARNING:Xst:1426 - The value init of the FF/Latch attack_2 hinder the constant cleaning in the block state_machine.
    You should achieve better results by setting this init to 0.
+WARNING:Xst:1710 - FF/Latch <digit_seg_7> (without init value) has a constant value of 1 in block <seven_seg>. This FF/Latch will be trimmed during the optimization process.
 
 Synthesizing (advanced) Unit <Clock_div>.
 The following registers are absorbed into counter <cnt>: 1 register on signal <cnt>.
 Unit <Clock_div> synthesized (advanced).
 
+Synthesizing (advanced) Unit <Debouncer>.
+The following registers are absorbed into counter <cnt>: 1 register on signal <cnt>.
+Unit <Debouncer> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Seven_seg>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_anode> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 4-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <scanning>      |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <anode>         |          |
+    -----------------------------------------------------------------------
+Unit <Seven_seg> synthesized (advanced).
+
 Synthesizing (advanced) Unit <State_machine>.
 The following registers are absorbed into accumulator <cnt>: 1 register on signal <cnt>.
 The following registers are absorbed into counter <cnt_attack>: 1 register on signal <cnt_attack>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n5097> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n5236> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -1046,34 +1177,37 @@ Unit <VGA_generator> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 1
+# RAMs                                                 : 2
+ 4x4-bit single-port distributed Read Only RAM         : 1
  4x6-bit single-port distributed Read Only RAM         : 1
-# Adders/Subtractors                                   : 62
+# Adders/Subtractors                                   : 66
  10-bit subtractor                                     : 2
  16-bit adder                                          : 4
+ 4-bit adder                                           : 4
  5-bit subtractor                                      : 2
  7-bit subtractor                                      : 12
  8-bit subtractor                                      : 12
  9-bit adder                                           : 29
  9-bit subtractor                                      : 1
-# Counters                                             : 4
+# Counters                                             : 5
  10-bit up counter                                     : 2
- 32-bit up counter                                     : 2
+ 32-bit up counter                                     : 3
 # Accumulators                                         : 1
  32-bit up accumulator                                 : 1
-# Registers                                            : 261
- Flip-Flops                                            : 261
-# Comparators                                          : 64
+# Registers                                            : 299
+ Flip-Flops                                            : 299
+# Comparators                                          : 65
  1-bit comparator not equal                            : 1
  10-bit comparator greater                             : 6
  10-bit comparator lessequal                           : 3
+ 5-bit comparator equal                                : 1
  8-bit comparator greater                              : 4
  8-bit comparator lessequal                            : 26
  9-bit comparator greater                              : 24
-# Multiplexers                                         : 1570
- 1-bit 2-to-1 multiplexer                              : 1333
+# Multiplexers                                         : 1698
+ 1-bit 2-to-1 multiplexer                              : 1445
  1-bit 3-to-1 multiplexer                              : 192
- 1-bit 4-to-1 multiplexer                              : 24
+ 1-bit 4-to-1 multiplexer                              : 40
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
  32-bit 2-to-1 multiplexer                             : 1
@@ -1089,6 +1223,7 @@ Macro Statistics
 =========================================================================
 WARNING:Xst:1426 - The value init of the FF/Latch attack_2 hinder the constant cleaning in the block State_machine.
    You should achieve better results by setting this init to 0.
+WARNING:Xst:1710 - FF/Latch <digit_seg_7> (without init value) has a constant value of 1 in block <Seven_seg>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <clock_div/cnt_26> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <clock_div/cnt_27> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <clock_div/cnt_28> of sequential type is unconnected in block <top>.
@@ -1098,38 +1233,33 @@ WARNING:Xst:2677 - Node <clock_div/cnt_31> of sequential type is unconnected in 
 
 Optimizing unit <top> ...
 
+Optimizing unit <Debouncer> ...
+
 Optimizing unit <Hero_state> ...
 
 Optimizing unit <State_machine> ...
 WARNING:Xst:1293 - FF/Latch <state_monsters_143> has a constant value of 0 in block <State_machine>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <Seven_seg> ...
+
+Optimizing unit <Score_counter> ...
 WARNING:Xst:2677 - Node <hero_state/old_state_1> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <hero_state/old_state_0> of sequential type is unconnected in block <top>.
-WARNING:Xst:1293 - FF/Latch <state_machine/state_monsters_183> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <state_machine/state_monsters_184> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <state_machine/state_monsters_186> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <state_machine/state_monsters_189> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <state_machine/state_monsters_151> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <state_machine/state_monsters_136> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <state_machine/state_monsters_142> 
-INFO:Xst:2261 - The FF/Latch <state_machine/state_monsters_147> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <state_machine/state_monsters_149> 
-INFO:Xst:2261 - The FF/Latch <state_machine/state_monsters_182> in Unit <top> is equivalent to the following 4 FFs/Latches, which will be removed : <state_machine/state_monsters_185> <state_machine/state_monsters_187> <state_machine/state_monsters_188> <state_machine/state_monsters_173> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 26.
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 28.
 FlipFlop generator/x_cnt_0 has been replicated 3 time(s)
-FlipFlop generator/x_cnt_1 has been replicated 3 time(s)
+FlipFlop generator/x_cnt_1 has been replicated 2 time(s)
 FlipFlop generator/x_cnt_2 has been replicated 3 time(s)
-FlipFlop generator/x_cnt_3 has been replicated 1 time(s)
+FlipFlop generator/x_cnt_3 has been replicated 2 time(s)
 FlipFlop generator/x_cnt_4 has been replicated 2 time(s)
 FlipFlop generator/x_cnt_5 has been replicated 2 time(s)
-FlipFlop generator/x_cnt_6 has been replicated 1 time(s)
 FlipFlop generator/y_cnt_0 has been replicated 4 time(s)
 FlipFlop generator/y_cnt_1 has been replicated 4 time(s)
-FlipFlop generator/y_cnt_2 has been replicated 4 time(s)
-FlipFlop generator/y_cnt_3 has been replicated 4 time(s)
-FlipFlop generator/y_cnt_4 has been replicated 2 time(s)
-FlipFlop generator/y_cnt_5 has been replicated 3 time(s)
-FlipFlop generator/y_cnt_6 has been replicated 3 time(s)
+FlipFlop generator/y_cnt_2 has been replicated 3 time(s)
+FlipFlop generator/y_cnt_3 has been replicated 3 time(s)
+FlipFlop generator/y_cnt_4 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -1137,8 +1267,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 396
- Flip-Flops                                            : 396
+# Registers                                            : 467
+ Flip-Flops                                            : 467
 
 =========================================================================
 
@@ -1161,33 +1291,36 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 2715
+# BELS                             : 2961
 #      GND                         : 16
-#      INV                         : 6
-#      LUT1                        : 101
-#      LUT2                        : 128
-#      LUT3                        : 144
-#      LUT4                        : 297
-#      LUT5                        : 531
-#      LUT6                        : 851
-#      MUXCY                       : 284
-#      MUXF7                       : 26
+#      INV                         : 24
+#      LUT1                        : 132
+#      LUT2                        : 145
+#      LUT3                        : 147
+#      LUT4                        : 326
+#      LUT5                        : 491
+#      LUT6                        : 967
+#      MUXCY                       : 315
+#      MUXF7                       : 35
 #      VCC                         : 16
-#      XORCY                       : 315
-# FlipFlops/Latches                : 402
-#      FD                          : 77
-#      FDE                         : 225
-#      FDR                         : 33
-#      FDRE                        : 67
+#      XORCY                       : 347
+# FlipFlops/Latches                : 480
+#      FD                          : 82
+#      FDC                         : 4
+#      FDCE                        : 12
+#      FDE                         : 241
+#      FDR                         : 44
+#      FDRE                        : 90
+#      LD                          : 7
 # RAMS                             : 37
 #      RAMB16BWER                  : 16
 #      RAMB8BWER                   : 21
-# Clock Buffers                    : 4
+# Clock Buffers                    : 3
 #      BUFG                        : 2
-#      BUFGP                       : 2
-# IO Buffers                       : 22
-#      IBUF                        : 4
-#      OBUF                        : 18
+#      BUFGP                       : 1
+# IO Buffers                       : 35
+#      IBUF                        : 5
+#      OBUF                        : 30
 
 Device utilization summary:
 ---------------------------
@@ -1196,25 +1329,26 @@ Selected Device : 6slx16csg324-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             402  out of  18224     2%  
- Number of Slice LUTs:                 2058  out of   9112    22%  
-    Number used as Logic:              2058  out of   9112    22%  
+ Number of Slice Registers:             473  out of  18224     2%  
+ Number of Slice LUTs:                 2232  out of   9112    24%  
+    Number used as Logic:              2232  out of   9112    24%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2113
-   Number with an unused Flip Flop:    1711  out of   2113    80%  
-   Number with an unused LUT:            55  out of   2113     2%  
-   Number of fully used LUT-FF pairs:   347  out of   2113    16%  
-   Number of unique control sets:        47
+ Number of LUT Flip Flop pairs used:   2289
+   Number with an unused Flip Flop:    1816  out of   2289    79%  
+   Number with an unused LUT:            57  out of   2289     2%  
+   Number of fully used LUT-FF pairs:   416  out of   2289    18%  
+   Number of unique control sets:        66
 
 IO Utilization: 
- Number of IOs:                          40
- Number of bonded IOBs:                  24  out of    232    10%  
+ Number of IOs:                          44
+ Number of bonded IOBs:                  36  out of    232    15%  
+    IOB Flip Flops/Latches:               7
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:               27  out of     32    84%  
     Number using Block RAM only:         27
- Number of BUFG/BUFGCTRLs:                4  out of     16    25%  
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
 
 ---------------------------
 Partition Resource Summary:
@@ -1234,29 +1368,34 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)                                                                                                                   | Load  |
------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+-------+
-clock_div/cnt_1                    | BUFG                                                                                                                                    | 110   |
-clk_100MHz                         | BUFGP                                                                                                                                   | 26    |
-clock_div/cnt_15                   | BUFG                                                                                                                                    | 302   |
-power                              | BUFGP                                                                                                                                   | 1     |
-bg/N1                              | NONE(bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[22].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)           | 23    |
-hero_main_0/N1                     | NONE(hero_main_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)    | 1     |
-hero_main_1/N1                     | NONE(hero_main_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)    | 1     |
-hero_up/N1                         | NONE(hero_up/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)        | 1     |
-hero_down/N1                       | NONE(hero_down/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)      | 1     |
-hero_left/N1                       | NONE(hero_left/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)      | 1     |
-hero_right/N1                      | NONE(hero_right/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)     | 1     |
-monster_up_0/N1                    | NONE(monster_up_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)   | 1     |
-monster_up_1/N1                    | NONE(monster_up_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)   | 1     |
-monster_down_0/N1                  | NONE(monster_down_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
-monster_down_1/N1                  | NONE(monster_down_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
-monster_left_0/N1                  | NONE(monster_left_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
-monster_left_1/N1                  | NONE(monster_left_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
-monster_right_0/N1                 | NONE(monster_right_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)| 1     |
-monster_right_1/N1                 | NONE(monster_right_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)| 1     |
------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+-------+
+-------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                               | Clock buffer(FF name)                                                                                                                   | Load  |
+-------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+-------+
+clock_div/cnt_1                            | BUFG                                                                                                                                    | 100   |
+clk_100MHz                                 | BUFGP                                                                                                                                   | 68    |
+clock_div/cnt_15                           | BUFG                                                                                                                                    | 325   |
+deboncer/btns_stable_4                     | NONE(state_machine/toggle)                                                                                                              | 1     |
+seven_seg/_n0050<0>(seven_seg/_n0050<0>1:O)| NONE(*)(seven_seg/digit_seg_0)                                                                                                          | 7     |
+_i000003/pulse(_i000003/out3:O)            | NONE(*)(_i000003/score_7)                                                                                                               | 16    |
+bg/N1                                      | NONE(bg/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[22].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)           | 23    |
+hero_main_0/N1                             | NONE(hero_main_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)    | 1     |
+hero_main_1/N1                             | NONE(hero_main_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)    | 1     |
+hero_up/N1                                 | NONE(hero_up/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)        | 1     |
+hero_down/N1                               | NONE(hero_down/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)      | 1     |
+hero_left/N1                               | NONE(hero_left/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)      | 1     |
+hero_right/N1                              | NONE(hero_right/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)     | 1     |
+monster_up_0/N1                            | NONE(monster_up_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)   | 1     |
+monster_up_1/N1                            | NONE(monster_up_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)   | 1     |
+monster_down_0/N1                          | NONE(monster_down_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
+monster_down_1/N1                          | NONE(monster_down_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
+monster_left_0/N1                          | NONE(monster_left_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
+monster_left_1/N1                          | NONE(monster_left_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram) | 1     |
+monster_right_0/N1                         | NONE(monster_right_0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)| 1     |
+monster_right_1/N1                         | NONE(monster_right_1/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM9.ram)| 1     |
+-------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -1267,9 +1406,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 14.668ns (Maximum Frequency: 68.176MHz)
-   Minimum input arrival time before clock: 7.209ns
-   Maximum output required time after clock: 10.454ns
+   Minimum period: 15.582ns (Maximum Frequency: 64.177MHz)
+   Minimum input arrival time before clock: 5.761ns
+   Maximum output required time after clock: 10.603ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1278,224 +1417,255 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_div/cnt_1'
-  Clock period: 14.668ns (frequency: 68.176MHz)
-  Total number of paths / destination ports: 3923388 / 627
+  Clock period: 15.582ns (frequency: 64.177MHz)
+  Total number of paths / destination ports: 5854398 / 598
 -------------------------------------------------------------------------
-Delay:               14.668ns (Levels of Logic = 11)
-  Source:            generator/x_cnt_4_1 (FF)
+Delay:               15.582ns (Levels of Logic = 12)
+  Source:            generator/x_cnt_1_1 (FF)
   Destination:       selector/RGB_0 (FF)
   Source Clock:      clock_div/cnt_1 rising
   Destination Clock: clock_div/cnt_1 rising
 
-  Data Path: generator/x_cnt_4_1 to selector/RGB_0
+  Data Path: generator/x_cnt_1_1 to selector/RGB_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              6   0.525   1.306  generator/x_cnt_4_1 (generator/x_cnt_4_1)
-     LUT5:I0->O            4   0.254   0.912  selector/Msub_n0129_Madd_xor<5>111_1 (selector/Msub_n0129_Madd_xor<5>111)
-     LUT4:I2->O           17   0.250   1.437  selector/Msub_n0129_Madd_xor<6>11_1 (selector/Msub_n0129_Madd_xor<6>11)
-     LUT5:I2->O            1   0.235   0.790  selector/monster_state_calculator/GND_7_o_BUS_0017_LessThan_51_o14 (selector/monster_state_calculator/GND_7_o_BUS_0017_LessThan_51_o2)
-     LUT6:I4->O            1   0.250   0.682  selector/monster_state_calculator/monster<8>1 (selector/monster_state_calculator/monster<8>1)
-     LUT6:I5->O           19   0.254   1.369  selector/monster_state_calculator/monster<8>13 (selector/monster_state_calculator/monster<8>)
-     LUT6:I4->O            1   0.250   1.112  selector/monster_state_calculator/monster_right_on2 (selector/monster_state_calculator/monster_right_on1)
-     LUT6:I1->O           16   0.254   1.182  selector/monster_state_calculator/monster_right_on7 (selector/monster_right_on)
-     LUT6:I5->O            1   0.254   0.790  selector/monster_right_on_data_monster_right_1[7]_AND_223_o (selector/monster_right_on_data_monster_right_1[7]_AND_223_o)
-     LUT6:I4->O            1   0.250   0.682  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1011 (selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1011)
-     LUT6:I5->O            8   0.254   1.052  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1014 (selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT101)
-     LUT6:I4->O            1   0.250   0.000  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1010 (selector/data_bg[7]_data_bg[7]_mux_65_OUT<1>)
+     FDR:C->Q             14   0.525   1.235  generator/x_cnt_1_1 (generator/x_cnt_1_1)
+     LUT2:I0->O           12   0.250   1.297  selector/Msub_n0129_Madd_xor<1>11 (selector/n0129<1>)
+     LUT6:I3->O            2   0.235   0.726  selector/monster_state_calculator/GND_18_o_BUS_0007_LessThan_21_o2 (selector/monster_state_calculator/GND_18_o_BUS_0007_LessThan_21_o1)
+     LUT6:I5->O            2   0.254   0.834  selector/monster_state_calculator/GND_18_o_BUS_0007_LessThan_21_o11 (selector/monster_state_calculator/GND_18_o_BUS_0007_LessThan_21_o11)
+     LUT4:I2->O            1   0.250   0.682  selector/monster_state_calculator/GND_18_o_BUS_0007_LessThan_21_o14 (selector/monster_state_calculator/GND_18_o_BUS_0007_LessThan_21_o2)
+     LUT6:I5->O            1   0.254   0.682  selector/monster_state_calculator/monster<3>1 (selector/monster_state_calculator/monster<3>1)
+     LUT6:I5->O           19   0.254   1.369  selector/monster_state_calculator/monster<3>13 (selector/monster_state_calculator/monster<3>)
+     LUT6:I4->O            1   0.250   1.112  selector/monster_state_calculator/monster_left_on6 (selector/monster_state_calculator/monster_left_on5)
+     LUT6:I1->O           11   0.254   1.039  selector/monster_state_calculator/monster_left_on7 (selector/monster_left_on)
+     LUT6:I5->O           15   0.254   1.383  selector/monster_left_on_data_monster_left_1[7]_AND_219_o (selector/monster_left_on_data_monster_left_1[7]_AND_219_o)
+     LUT3:I0->O            1   0.235   0.682  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT10131 (selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1013)
+     LUT6:I5->O            8   0.254   0.944  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1014 (selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT101)
+     LUT6:I5->O            1   0.254   0.000  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1010 (selector/data_bg[7]_data_bg[7]_mux_65_OUT<1>)
      FDR:D                     0.074          selector/RGB_1
     ----------------------------------------
-    Total                     14.668ns (3.354ns logic, 11.314ns route)
-                                       (22.9% logic, 77.1% route)
+    Total                     15.582ns (3.597ns logic, 11.985ns route)
+                                       (23.1% logic, 76.9% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_100MHz'
-  Clock period: 3.431ns (frequency: 291.443MHz)
-  Total number of paths / destination ports: 351 / 26
+  Clock period: 5.928ns (frequency: 168.691MHz)
+  Total number of paths / destination ports: 2248 / 127
 -------------------------------------------------------------------------
-Delay:               3.431ns (Levels of Logic = 2)
-  Source:            clock_div/cnt_25 (FF)
-  Destination:       clock_div/cnt_25 (FF)
+Delay:               5.928ns (Levels of Logic = 3)
+  Source:            deboncer/cnt_10 (FF)
+  Destination:       deboncer/btns_stable_4 (FF)
   Source Clock:      clk_100MHz rising
   Destination Clock: clk_100MHz rising
 
-  Data Path: clock_div/cnt_25 to clock_div/cnt_25
+  Data Path: deboncer/cnt_10 to deboncer/btns_stable_4
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q             244   0.525   2.429  clock_div/cnt_25 (clock_div/cnt_25)
-     LUT1:I0->O            0   0.254   0.000  clock_div/Mcount_cnt_xor<25>_rt (clock_div/Mcount_cnt_xor<25>_rt)
-     XORCY:LI->O           1   0.149   0.000  clock_div/Mcount_cnt_xor<25> (Result<25>)
-     FD:D                      0.074          clock_div/cnt_25
+     FDRE:C->Q             2   0.525   1.181  deboncer/cnt_10 (deboncer/cnt_10)
+     LUT6:I0->O            2   0.254   1.181  deboncer/cnt[31]_GND_2_o_equal_5_o<31>1 (deboncer/cnt[31]_GND_2_o_equal_5_o<31>)
+     LUT6:I0->O            1   0.254   1.137  deboncer/cnt[31]_GND_2_o_equal_5_o<31>7 (deboncer/cnt[31]_GND_2_o_equal_5_o)
+     LUT6:I0->O            5   0.254   0.840  deboncer/_n0040_inv1 (deboncer/_n0040_inv)
+     FDE:CE                    0.302          deboncer/btns_stable_0
     ----------------------------------------
-    Total                      3.431ns (1.002ns logic, 2.429ns route)
-                                       (29.2% logic, 70.8% route)
+    Total                      5.928ns (1.589ns logic, 4.339ns route)
+                                       (26.8% logic, 73.2% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_div/cnt_15'
   Clock period: 8.594ns (frequency: 116.360MHz)
-  Total number of paths / destination ports: 12988 / 583
+  Total number of paths / destination ports: 14381 / 629
 -------------------------------------------------------------------------
 Delay:               8.594ns (Levels of Logic = 6)
-  Source:            state_machine/state_monsters_221 (FF)
+  Source:            state_machine/state_monsters_220 (FF)
   Destination:       state_machine/state_monsters_223 (FF)
   Source Clock:      clock_div/cnt_15 rising
   Destination Clock: clock_div/cnt_15 rising
 
-  Data Path: state_machine/state_monsters_221 to state_machine/state_monsters_223
+  Data Path: state_machine/state_monsters_220 to state_machine/state_monsters_223
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             12   0.525   1.297  state_machine/state_monsters_221 (state_machine/state_monsters_221)
-     LUT3:I0->O            4   0.235   1.080  state_machine/state_monsters[227]_GND_3_o_equal_844_o<227>111 (state_machine/state_monsters[227]_GND_3_o_equal_844_o<227>11)
-     LUT6:I2->O            7   0.254   1.018  state_machine/state_monsters[227]_PWR_3_o_equal_835_o<227>1 (state_machine/state_monsters[227]_PWR_3_o_equal_835_o)
-     LUT3:I1->O            3   0.250   1.196  state_machine/state_monsters[227]_state_monsters[227]_OR_630_o1 (state_machine/state_monsters[227]_state_monsters[227]_OR_630_o)
-     LUT6:I1->O            3   0.254   1.221  state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1336_o111 (state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1336_o11)
-     LUT6:I0->O            1   0.254   0.682  state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1336_o11 (state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1336_o1)
-     LUT6:I5->O            1   0.254   0.000  state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1336_o12 (state_machine/state_monsters[223]_state_monsters[223]_MUX_1336_o)
+     FDE:C->Q             12   0.525   1.297  state_machine/state_monsters_220 (state_machine/state_monsters_220)
+     LUT3:I0->O            4   0.235   1.080  state_machine/state_monsters[227]_GND_14_o_equal_856_o<227>111 (state_machine/state_monsters[227]_GND_14_o_equal_856_o<227>11)
+     LUT6:I2->O            7   0.254   1.018  state_machine/state_monsters[227]_PWR_14_o_equal_847_o<227>1 (state_machine/state_monsters[227]_PWR_14_o_equal_847_o)
+     LUT3:I1->O            3   0.250   1.196  state_machine/state_monsters[227]_state_monsters[227]_OR_634_o1 (state_machine/state_monsters[227]_state_monsters[227]_OR_634_o)
+     LUT6:I1->O            3   0.254   1.221  state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1480_o111 (state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1480_o11)
+     LUT6:I0->O            1   0.254   0.682  state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1480_o11 (state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1480_o1)
+     LUT6:I5->O            1   0.254   0.000  state_machine/Mmux_state_monsters[223]_state_monsters[223]_MUX_1480_o12 (state_machine/state_monsters[223]_state_monsters[223]_MUX_1480_o)
      FDE:D                     0.074          state_machine/state_monsters_223
     ----------------------------------------
     Total                      8.594ns (2.100ns logic, 6.494ns route)
                                        (24.4% logic, 75.6% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'power'
-  Clock period: 2.338ns (frequency: 427.716MHz)
+Timing constraint: Default period analysis for Clock 'deboncer/btns_stable_4'
+  Clock period: 2.300ns (frequency: 434.783MHz)
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Delay:               2.338ns (Levels of Logic = 1)
+Delay:               2.300ns (Levels of Logic = 1)
   Source:            state_machine/toggle (FF)
   Destination:       state_machine/toggle (FF)
-  Source Clock:      power rising
-  Destination Clock: power rising
+  Source Clock:      deboncer/btns_stable_4 rising
+  Destination Clock: deboncer/btns_stable_4 rising
 
   Data Path: state_machine/toggle to state_machine/toggle
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               4   0.525   0.803  state_machine/toggle (state_machine/toggle)
-     INV:I->O              1   0.255   0.681  state_machine/toggle_INV_1_o1_INV_0 (state_machine/toggle_INV_1_o)
+     FD:C->Q               3   0.525   0.765  state_machine/toggle (state_machine/toggle)
+     INV:I->O              1   0.255   0.681  state_machine/toggle_INV_6_o1_INV_0 (state_machine/toggle_INV_6_o)
      FD:D                      0.074          state_machine/toggle
     ----------------------------------------
-    Total                      2.338ns (0.854ns logic, 1.484ns route)
-                                       (36.5% logic, 63.5% route)
+    Total                      2.300ns (0.854ns logic, 1.446ns route)
+                                       (37.1% logic, 62.9% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_div/cnt_1'
-  Total number of paths / destination ports: 64 / 8
+Timing constraint: Default period analysis for Clock '_i000003/pulse'
+  Clock period: 4.549ns (frequency: 219.829MHz)
+  Total number of paths / destination ports: 144 / 28
 -------------------------------------------------------------------------
-Offset:              7.209ns (Levels of Logic = 5)
-  Source:            btn<0> (PAD)
-  Destination:       selector/RGB_0 (FF)
-  Destination Clock: clock_div/cnt_1 rising
+Delay:               4.549ns (Levels of Logic = 2)
+  Source:            _i000003/score_3 (FF)
+  Destination:       _i000003/score_14 (FF)
+  Source Clock:      _i000003/pulse rising
+  Destination Clock: _i000003/pulse rising
 
-  Data Path: btn<0> to selector/RGB_0
+  Data Path: _i000003/score_3 to _i000003/score_14
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             9   1.328   1.252  btn_0_IBUF (btn_0_IBUF)
-     LUT4:I0->O           11   0.254   1.469  btn[3]_reduce_xor_11_xo<0>1 (pressing)
-     LUT5:I0->O            1   0.254   0.958  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT104 (selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT104)
-     LUT6:I2->O            1   0.254   1.112  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT105 (selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT105)
-     LUT6:I1->O            1   0.254   0.000  selector/Mmux_data_bg[7]_data_bg[7]_mux_65_OUT1010 (selector/data_bg[7]_data_bg[7]_mux_65_OUT<1>)
-     FDR:D                     0.074          selector/RGB_1
+     FDC:C->Q              4   0.525   1.080  _i000003/score_3 (_i000003/score_3)
+     LUT4:I0->O            6   0.254   1.331  _i000003/GND_4_o_GND_4_o_equal_2_o<3>1 (_i000003/GND_4_o_GND_4_o_equal_2_o)
+     LUT6:I0->O            4   0.254   0.803  _i000003/_n0143_inv (_i000003/_n0143_inv)
+     FDCE:CE                   0.302          _i000003/score_13
     ----------------------------------------
-    Total                      7.209ns (2.418ns logic, 4.791ns route)
-                                       (33.5% logic, 66.5% route)
+    Total                      4.549ns (1.335ns logic, 3.214ns route)
+                                       (29.3% logic, 70.7% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_div/cnt_15'
-  Total number of paths / destination ports: 588 / 69
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_100MHz'
+  Total number of paths / destination ports: 195 / 47
 -------------------------------------------------------------------------
-Offset:              5.371ns (Levels of Logic = 3)
+Offset:              5.761ns (Levels of Logic = 3)
   Source:            btn<0> (PAD)
-  Destination:       state_machine/attacking (FF)
-  Destination Clock: clock_div/cnt_15 rising
+  Destination:       deboncer/cnt_31 (FF)
+  Destination Clock: clk_100MHz rising
 
-  Data Path: btn<0> to state_machine/attacking
+  Data Path: btn<0> to deboncer/cnt_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             9   1.328   1.252  btn_0_IBUF (btn_0_IBUF)
-     LUT4:I0->O           11   0.254   1.147  btn[3]_reduce_xor_11_xo<0>1 (pressing)
-     LUT5:I3->O            1   0.250   0.681  state_machine/_n28081 (state_machine/_n2808)
-     FDRE:R                    0.459          state_machine/attacking
+     IBUF:I->O             3   1.328   1.221  btn_0_IBUF (btn_0_IBUF)
+     LUT6:I0->O            2   0.254   0.726  deboncer/n00035_SW0 (N90)
+     LUT5:I4->O           32   0.254   1.519  deboncer/n0003_inv1 (deboncer/n0003_inv)
+     FDRE:R                    0.459          deboncer/cnt_0
     ----------------------------------------
-    Total                      5.371ns (2.291ns logic, 3.080ns route)
-                                       (42.7% logic, 57.3% route)
+    Total                      5.761ns (2.295ns logic, 3.466ns route)
+                                       (39.8% logic, 60.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'seven_seg/_n0050<0>'
+  Total number of paths / destination ports: 7 / 7
+-------------------------------------------------------------------------
+Offset:              4.174ns (Levels of Logic = 1)
+  Source:            seven_seg/digit_seg_6 (LATCH)
+  Destination:       segment<6> (PAD)
+  Source Clock:      seven_seg/_n0050<0> falling
+
+  Data Path: seven_seg/digit_seg_6 to segment<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.581   0.681  seven_seg/digit_seg_6 (seven_seg/digit_seg_6)
+     OBUF:I->O                 2.912          segment_6_OBUF (segment<6>)
+    ----------------------------------------
+    Total                      4.174ns (3.493ns logic, 0.681ns route)
+                                       (83.7% logic, 16.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_div/cnt_1'
   Total number of paths / destination ports: 222 / 10
 -------------------------------------------------------------------------
-Offset:              10.454ns (Levels of Logic = 5)
-  Source:            generator/y_cnt_4_1 (FF)
+Offset:              10.603ns (Levels of Logic = 5)
+  Source:            generator/y_cnt_1_1 (FF)
   Destination:       vga_R<2> (PAD)
   Source Clock:      clock_div/cnt_1 rising
 
-  Data Path: generator/y_cnt_4_1 to vga_R<2>
+  Data Path: generator/y_cnt_1_1 to vga_R<2>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             6   0.525   1.306  generator/y_cnt_4_1 (generator/y_cnt_4_1)
-     LUT5:I0->O           34   0.254   1.829  generator/Msub_y_ptr_xor<7>111 (generator/Msub_y_ptr_xor<7>11)
+     FDRE:C->Q             5   0.525   1.271  generator/y_cnt_1_1 (generator/y_cnt_1_1)
+     LUT5:I0->O           45   0.254   2.013  generator/Msub_y_ptr_xor<7>111 (generator/Msub_y_ptr_xor<7>11)
      LUT6:I2->O            1   0.254   1.137  generator/valid1 (generator/valid)
      LUT6:I0->O            8   0.254   1.052  generator/valid5 (valid)
      LUT2:I0->O            1   0.250   0.681  render/Mmux_vga_B21 (vga_B_1_OBUF)
      OBUF:I->O                 2.912          vga_B_1_OBUF (vga_B<1>)
     ----------------------------------------
-    Total                     10.454ns (4.449ns logic, 6.005ns route)
-                                       (42.6% logic, 57.4% route)
+    Total                     10.603ns (4.449ns logic, 6.154ns route)
+                                       (42.0% logic, 58.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_div/cnt_15'
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Offset:              5.870ns (Levels of Logic = 1)
+Offset:              5.873ns (Levels of Logic = 1)
   Source:            state_machine/alive (FF)
-  Destination:       Led<1> (PAD)
+  Destination:       Led<0> (PAD)
   Source Clock:      clock_div/cnt_15 rising
 
-  Data Path: state_machine/alive to Led<1>
+  Data Path: state_machine/alive to Led<0>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q             273   0.525   2.433  state_machine/alive (state_machine/alive)
-     OBUF:I->O                 2.912          Led_1_OBUF (Led<1>)
-    ----------------------------------------
-    Total                      5.870ns (3.437ns logic, 2.433ns route)
-                                       (58.6% logic, 41.4% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'power'
-  Total number of paths / destination ports: 1 / 1
--------------------------------------------------------------------------
-Offset:              4.240ns (Levels of Logic = 1)
-  Source:            state_machine/toggle (FF)
-  Destination:       Led<0> (PAD)
-  Source Clock:      power rising
-
-  Data Path: state_machine/toggle to Led<0>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FD:C->Q               4   0.525   0.803  state_machine/toggle (state_machine/toggle)
+     FD:C->Q             297   0.525   2.436  state_machine/alive (state_machine/alive)
      OBUF:I->O                 2.912          Led_0_OBUF (Led<0>)
     ----------------------------------------
-    Total                      4.240ns (3.437ns logic, 0.803ns route)
-                                       (81.1% logic, 18.9% route)
+    Total                      5.873ns (3.437ns logic, 2.436ns route)
+                                       (58.5% logic, 41.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_100MHz'
+  Total number of paths / destination ports: 8 / 4
+-------------------------------------------------------------------------
+Offset:              5.452ns (Levels of Logic = 2)
+  Source:            clock_div/cnt_18 (FF)
+  Destination:       an<3> (PAD)
+  Source Clock:      clk_100MHz rising
+
+  Data Path: clock_div/cnt_18 to an<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               9   0.525   1.084  clock_div/cnt_18 (clock_div/cnt_18)
+     LUT2:I0->O            1   0.250   0.681  seven_seg/Mram_anode31 (an_3_OBUF)
+     OBUF:I->O                 2.912          an_3_OBUF (an<3>)
+    ----------------------------------------
+    Total                      5.452ns (3.687ns logic, 1.765ns route)
+                                       (67.6% logic, 32.4% route)
 
 =========================================================================
 
 Cross Clock Domains Report:
 --------------------------
 
+Clock to Setup on destination clock _i000003/pulse
+----------------+---------+---------+---------+---------+
+                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock    |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------+---------+---------+---------+---------+
+_i000003/pulse  |    4.549|         |         |         |
+clock_div/cnt_15|    4.856|         |         |         |
+----------------+---------+---------+---------+---------+
+
 Clock to Setup on destination clock clk_100MHz
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_100MHz     |    3.431|         |         |         |
+clk_100MHz     |    5.928|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_div/cnt_1
@@ -1503,40 +1673,49 @@ Clock to Setup on destination clock clock_div/cnt_1
                 | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock    |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------+---------+---------+---------+---------+
-clk_100MHz      |    8.646|         |         |         |
-clock_div/cnt_1 |   14.668|         |         |         |
-clock_div/cnt_15|   14.735|         |         |         |
+clk_100MHz      |    8.365|         |         |         |
+clock_div/cnt_1 |   15.582|         |         |         |
+clock_div/cnt_15|   15.171|         |         |         |
 ----------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_div/cnt_15
-----------------+---------+---------+---------+---------+
-                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock    |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
-----------------+---------+---------+---------+---------+
-clk_100MHz      |    7.023|         |         |         |
-clock_div/cnt_15|    8.594|         |         |         |
-power           |    2.112|         |         |         |
-----------------+---------+---------+---------+---------+
+----------------------+---------+---------+---------+---------+
+                      | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock          |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------------+---------+---------+---------+---------+
+clk_100MHz            |    7.024|         |         |         |
+clock_div/cnt_15      |    8.594|         |         |         |
+deboncer/btns_stable_4|    2.074|         |         |         |
+----------------------+---------+---------+---------+---------+
 
-Clock to Setup on destination clock power
+Clock to Setup on destination clock deboncer/btns_stable_4
+----------------------+---------+---------+---------+---------+
+                      | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock          |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------------+---------+---------+---------+---------+
+deboncer/btns_stable_4|    2.300|         |         |         |
+----------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock seven_seg/_n0050<0>
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-power          |    2.338|         |         |         |
+_i000003/pulse |         |         |    3.441|         |
+clk_100MHz     |         |         |    3.720|         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 34.00 secs
-Total CPU time to Xst completion: 33.39 secs
+Total REAL time to Xst completion: 41.00 secs
+Total CPU time to Xst completion: 40.83 secs
  
 --> 
 
-Total memory usage is 336236 kilobytes
+Total memory usage is 335148 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   41 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of warnings :   52 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
 

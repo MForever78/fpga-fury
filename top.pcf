@@ -1,9 +1,21 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Mar 27 10:57:24 2015
+// Written by: Map P.20131013 on Sat Apr 04 22:07:10 2015
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "segment<0>" LOCATE = SITE "T17" LEVEL 1;
+COMP "segment<1>" LOCATE = SITE "T18" LEVEL 1;
+COMP "segment<2>" LOCATE = SITE "U17" LEVEL 1;
+COMP "segment<3>" LOCATE = SITE "U18" LEVEL 1;
+COMP "segment<4>" LOCATE = SITE "M14" LEVEL 1;
+COMP "segment<5>" LOCATE = SITE "N14" LEVEL 1;
+COMP "segment<6>" LOCATE = SITE "L14" LEVEL 1;
+COMP "segment<7>" LOCATE = SITE "M13" LEVEL 1;
 COMP "clk_100MHz" LOCATE = SITE "V10" LEVEL 1;
+COMP "an<0>" LOCATE = SITE "N16" LEVEL 1;
+COMP "an<1>" LOCATE = SITE "N15" LEVEL 1;
+COMP "an<2>" LOCATE = SITE "P18" LEVEL 1;
+COMP "an<3>" LOCATE = SITE "P17" LEVEL 1;
 COMP "hsync" LOCATE = SITE "N6" LEVEL 1;
 COMP "power" LOCATE = SITE "B8" LEVEL 1;
 PIN power_pin<0> = BEL "power" PINNAME PAD;
